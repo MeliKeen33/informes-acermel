@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Informes a Dirección · Wiidem · Acermel SRL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDF1F4;          /* fondo frío */
+    --card:#FFFFFF;
+    --ink:#1B2C38;            /* azul tinta */
+    --soft:#5F7382;
+    --faint:#93A6B4;
+    --hair:#D5DFE6;
+    --blue:#447596;           /* AZUL ACERMEL (logo) */
+    --blue-deep:#2E5570;
+    --blue-bar:#1F4460;
+    --sky:#7FB2D0;            /* celeste */
+    --sky-tint:#E8F2F8;
+    --alert:#C1553F;          /* solo para novedades urgentes */
+    --alert-tint:#FBEDE9;
+    --shadow:0 1px 2px rgba(27,44,56,.06),0 8px 22px rgba(27,44,56,.07);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.5;padding-bottom:56px}
+
+  /* ---------- Barra de menú ---------- */
+  .topbar{background:var(--blue-bar);color:#EAF2F7;border-bottom:3px solid var(--sky);position:sticky;top:0;z-index:10}
+  .topbar-inner{max-width:1040px;margin:0 auto;padding:11px clamp(16px,4vw,40px);display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .brand{display:flex;align-items:baseline;gap:12px;min-width:0}
+  .brand .mark{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;letter-spacing:.06em}
+  .brand .sub{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.05em;color:var(--sky);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .bar-meta{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#A9C6D8;text-align:right;white-space:nowrap}
+  .bar-meta b{color:#EAF2F7;font-weight:600}
+
+  main{max-width:1040px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+  .section-label{display:flex;align-items:center;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);margin:26px 0 16px}
+  .section-label::after{content:"";flex:1;height:1px;background:var(--hair)}
+
+  /* ---------- Novedades ---------- */
+  .novedades{background:var(--card);border:1px solid var(--hair);border-left:3px solid var(--blue);border-radius:12px;padding:18px clamp(16px,3vw,22px);box-shadow:var(--shadow)}
+  .nov-item{display:flex;align-items:flex-start;gap:12px;padding:9px 0;border-top:1px solid var(--hair)}
+  .nov-item:first-of-type{border-top:none;padding-top:2px}
+  .nov-tag{flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:5px;margin-top:1px;background:var(--sky-tint);color:var(--blue-deep);border:1px solid #CFE3EF;min-width:88px;text-align:center}
+  .nov-tag.alerta{background:var(--alert-tint);color:var(--alert);border-color:#EFCFC6}
+  .nov-item p{font-size:14px}
+  .nov-empty{font-size:13.5px;color:var(--soft);font-style:italic}
+
+  /* ---------- Informes ---------- */
+  .list{display:flex;flex-direction:column;gap:12px}
+  .card{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:clamp(14px,3vw,30px);background:var(--card);border:1px solid var(--hair);border-radius:12px;padding:18px clamp(16px,3vw,24px);text-decoration:none;color:inherit;box-shadow:var(--shadow);transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}
+  .card:hover,.card:focus-visible{transform:translateY(-2px);border-color:var(--blue);box-shadow:0 2px 4px rgba(27,44,56,.08),0 14px 30px rgba(68,117,150,.18);outline:none}
+  .card:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+
+  /* bloque de fechas de la semana */
+  .stamp{display:flex;flex-direction:column;align-items:center;justify-content:center;width:84px;padding:11px 6px;border-radius:10px;background:var(--blue);color:#fff;font-family:'IBM Plex Mono',monospace;line-height:1}
+  .stamp .rng{font-size:17px;font-weight:600;letter-spacing:-.01em}
+  .stamp .mes{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#D3E6F1;margin-top:6px}
+  .stamp .anio{font-size:9.5px;color:#AECDDF;margin-top:3px}
+
+  .body h2{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(15px,2.3vw,18px);line-height:1.25;letter-spacing:-.01em;margin-bottom:5px}
+  .body p{font-size:13.5px;color:var(--soft);max-width:62ch}
+  .semana{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--blue-deep);margin-top:8px;font-weight:500}
+  .go{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:var(--blue)}
+  .go svg{transition:transform .16s ease}
+  .card:hover .go svg,.card:focus-visible .go svg{transform:translateX(4px)}
+  .latest{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--blue-deep);border-radius:20px;padding:2px 9px;margin-bottom:7px}
+  .empty{background:var(--card);border:1px dashed var(--hair);border-radius:12px;padding:36px;text-align:center;color:var(--soft);font-size:14px}
+
+  footer{max-width:1040px;margin:36px auto 0;padding:18px clamp(16px,4vw,40px) 0;border-top:1px solid var(--hair);font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--faint);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+  @media (max-width:600px){
+    .card{grid-template-columns:auto 1fr;grid-template-areas:"stamp body" "go go";row-gap:12px}
+    .stamp{grid-area:stamp}.body{grid-area:body}.go{grid-area:go;justify-self:start}
+    .brand .sub{display:none}.nov-tag{min-width:auto}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="mark">ACERMEL</span>
+        <span class="sub">Wiidem · Informes a Dirección</span>
+      </div>
+      <div class="bar-meta"><b id="total">0</b> informes · últ. <b id="ultima">—</b></div>
+    </div>
+  </header>
+
+  <main>
+    <div class="section-label">Novedades de la semana</div>
+    <div class="novedades" id="novedades"></div>
+
+    <div class="section-label">Informes semanales · más reciente primero</div>
+    <div class="list" id="lista"></div>
+  </main>
+
+  <footer>
+    <span>Acermel SRL — uso interno de Dirección</span>
+    <span id="anio"></span>
+  </footer>
+
+<script>
+/* =====================================================================
+   1) NOVEDADES DE LA SEMANA   (editá / vaciá cuando quieras)
+      tipo: texto libre corto — Ausencia · Pendiente · Monitoreo · Nota
+      alerta: true -> se resalta (para lo urgente)
+      Si no querés mostrar nada:  const NOVEDADES = [];
+   ===================================================================== */
+const NOVEDADES = [
+  { tipo:"Monitoreo", alerta:true,  texto:"Prensa N° 2: productiva solo el 30% de sus 57 hs registradas — 35 hs en paradas mejorables." },
+  { tipo:"Pendiente", alerta:false, texto:"Sin causa registrada en Cucharón N° 10 (1.5×) y Espátula Reforzada 30x8 (2.3×)." },
+  { tipo:"Nota",      alerta:false, texto:"Plegadora en calibración: sus ciclos todavía no son confiables." }
+];
+
+/* =====================================================================
+   2) INFORMES  ·  lo ÚNICO que tocás por cada informe nuevo
+   ---------------------------------------------------------------------
+   Por cada informe nuevo:
+     a) Dejá el .html en ESTA MISMA carpeta
+     b) Copiá una línea de abajo y cambiale los datos (se ordena solo)
+   Campos:
+     desde / hasta -> AAAA-MM-DD (lunes y viernes de la semana del dato)
+     titulo, resumen
+     archivo -> nombre EXACTO del .html
+   ===================================================================== */
+const INFORMES = [
+  { desde:"2026-08-03", hasta:"2026-08-07",
+    titulo:"Informe semanal de planta — Producción y desvíos de ciclo",
+    resumen:"3.831 piezas en 67 productos: 21 en rojo, 17 en amarillo, 29 en verde. Foco en Prensa N° 2 y desvíos sin causa registrada.",
+    archivo:"informe-2026-08-03.html" }
+];
+
+/* ---------------- render (no hace falta tocar de acá para abajo) ---------------- */
+const MESES=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+const ABREV=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+const P=iso=>{const[a,m,d]=iso.split("-").map(Number);return{a,m,d};};
+
+function etiquetaSemana(d1,d2){                     // "Semana del 3 al 7 de agosto de 2026"
+  const A=P(d1),B=P(d2);
+  if(A.m===B.m) return `Semana del ${A.d} al ${B.d} de ${MESES[A.m-1]} de ${B.a}`;
+  if(A.a===B.a) return `Semana del ${A.d} de ${MESES[A.m-1]} al ${B.d} de ${MESES[B.m-1]} de ${B.a}`;
+  return `Semana del ${A.d} de ${MESES[A.m-1]} de ${A.a} al ${B.d} de ${MESES[B.m-1]} de ${B.a}`;
+}
+function sello(d1,d2){                              // bloque compacto de la tarjeta
+  const A=P(d1),B=P(d2);
+  const rng=`${String(A.d).padStart(2,"0")}–${String(B.d).padStart(2,"0")}`;
+  const mes=A.m===B.m?ABREV[A.m-1]:`${ABREV[A.m-1]}/${ABREV[B.m-1]}`;
+  return {rng,mes,anio:B.a};
+}
+const corto=iso=>{const{a,m,d}=P(iso);return `${d} ${ABREV[m-1]} ${a}`;};
+
+// Novedades
+const nov=document.getElementById("novedades");
+nov.innerHTML = NOVEDADES.length
+  ? NOVEDADES.map(n=>`<div class="nov-item"><span class="nov-tag${n.alerta?' alerta':''}">${n.tipo}</span><p>${n.texto}</p></div>`).join("")
+  : '<p class="nov-empty">Sin novedades cargadas esta semana.</p>';
+
+// Informes
+const orden=[...INFORMES].sort((x,y)=>y.desde.localeCompare(x.desde));
+const lista=document.getElementById("lista");
+lista.innerHTML = orden.length ? orden.map((it,i)=>{
+  const s=sello(it.desde,it.hasta);
+  return `<a class="card" href="${it.archivo}">
+    <div class="stamp"><span class="rng">${s.rng}</span><span class="mes">${s.mes}</span><span class="anio">${s.anio}</span></div>
+    <div class="body">
+      ${i===0?'<span class="latest">Última</span>':''}
+      <h2>${it.titulo}</h2>
+      <p>${it.resumen}</p>
+      <div class="semana">${etiquetaSemana(it.desde,it.hasta)}</div>
+    </div>
+    <span class="go">Abrir informe
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9M9 4l4 4-4 4"/></svg>
+    </span></a>`;
+}).join("") : '<div class="empty">Todavía no hay informes cargados.</div>';
+
+document.getElementById("total").textContent=orden.length;
+document.getElementById("ultima").textContent=orden.length?corto(orden[0].hasta):"—";
+document.getElementById("anio").textContent="© "+new Date().getFullYear();
+</script>
+</body>
+</html>
