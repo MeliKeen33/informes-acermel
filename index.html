@@ -115,9 +115,17 @@
       Si no querés mostrar nada:  const NOVEDADES = [];
    ===================================================================== */
 const NOVEDADES = [
-  { tipo:"Monitoreo", alerta:true,  texto:"Prensa N° 2: productiva solo el 30% de sus 57 hs registradas — 35 hs en paradas mejorables." },
-  { tipo:"Pendiente", alerta:false, texto:"Sin causa registrada en Cucharón N° 10 (1.5×) y Espátula Reforzada 30x8 (2.3×)." },
-  { tipo:"Nota",      alerta:false, texto:"Plegadora en calibración: sus ciclos todavía no son confiables." }
+  { tipo:"Prensa 2", alerta:true,
+    texto:"<b>Pala despacho 00 y 01 – Estampado:</b> tardan ~3,2× lo que dice la planilla de costos (TC costos 0,58–0,67 min vs real 1,86–2,12 min, sobre 900 piezas). El tiempo extra es preparación manual de la pieza, no la máquina. <b>Decisión a tomar: subir el tiempo en costos, o cambiar el material de la matriz para dejar de usar papel con gasoil.</b>" },
+
+  { tipo:"Plegadoras", alerta:true,
+    texto:"<b>Cuatro productos por encima de costos:</b> Espátula Untar 8″ (3,3×) y 10″ (2,95×), Fondo Colador Cuadrado 16×16 – Plegado Borde (2,35×) y Asa Cacerola Donna – Plegado Punta (1,94×). <b>Decisión a tomar: actualizar los costos, o fabricar una matriz que haga los dos plegados de un golpe y reduzca el tiempo a la mitad.</b>" },
+
+  { tipo:"Calidad dato", alerta:false,
+    texto:"6 eventos de tablet quedaron sin cerrar (252 hs), varios de viernes a lunes. Invalidan el dato de Esmerilado y Plegadora 100 esta semana; se excluyeron del cálculo. En seguimiento con planta." },
+
+  { tipo:"Nota", alerta:false,
+    texto:"Plegadora 100: 13 hs en “Otra Tarea Designada” sin tipificar, segunda semana consecutiva. Se está revisando qué tarea es para darle su propia categoría." }
 ];
 
 /* =====================================================================
@@ -132,10 +140,14 @@ const NOVEDADES = [
      archivo -> nombre EXACTO del .html
    ===================================================================== */
 const INFORMES = [
+  { desde:"2026-08-10", hasta:"2026-08-14",
+    titulo:"Informe semanal de planta — Producción y desvíos de ciclo",
+    resumen:"7.484 piezas en 61 productos: 21 en rojo, 4 en amarillo, 35 en verde. 1 sin dato confiable.",
+    archivo:"informe-2026-08-10.html" },
   { desde:"2026-08-03", hasta:"2026-08-07",
     titulo:"Informe semanal de planta — Producción y desvíos de ciclo",
     resumen:"3.831 piezas en 67 productos: 21 en rojo, 17 en amarillo, 29 en verde. Foco en Prensa N° 2 y desvíos sin causa registrada.",
-    archivo:"informe-2026-08-03.html" }
+    archivo:"informe-2026-08-03.html" },
 ];
 
 /* ---------------- render (no hace falta tocar de acá para abajo) ---------------- */
