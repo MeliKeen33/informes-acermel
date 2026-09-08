@@ -23,6 +23,8 @@
     --sky-tint:#E8F2F8;
     --alert:#C1553F;          /* solo para novedades urgentes */
     --alert-tint:#FBEDE9;
+    --ok:#2E7D64;             /* seguimiento resuelto */
+    --ok-tint:#E6F2EE;
     --shadow:0 1px 2px rgba(27,44,56,.06),0 8px 22px rgba(27,44,56,.07);
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -51,6 +53,27 @@
   .nov-item p{font-size:14px}
   .nov-empty{font-size:13.5px;color:var(--soft);font-style:italic}
 
+
+  /* ---------- Seguimientos ---------- */
+  .seg{background:var(--card);border:1px solid var(--hair);border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
+  .seg table{width:100%;border-collapse:collapse}
+  .seg th{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);font-weight:500;text-align:left;padding:12px 16px 9px;border-bottom:1px solid var(--hair);background:#F7FAFC}
+  .seg td{padding:14px 16px;border-bottom:1px solid var(--hair);vertical-align:top;font-size:13.5px}
+  .seg tr:last-child td{border-bottom:none}
+  .seg .tema{font-weight:600;color:var(--ink);min-width:170px}
+  .seg .tema small{display:block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:400;color:var(--faint);margin-top:4px;text-transform:uppercase;letter-spacing:.06em}
+  .seg .acc{color:var(--soft);max-width:52ch}
+  .seg .est{white-space:nowrap;width:1%}
+  .seg .desde{white-space:nowrap;width:1%;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--soft);text-align:right}
+  .seg .desde b{display:block;color:var(--ink);font-weight:600;font-size:12px}
+  .badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:5px;border:1px solid}
+  .badge.decision{background:var(--alert-tint);color:var(--alert);border-color:#EFCFC6}
+  .badge.curso{background:var(--sky-tint);color:var(--blue-deep);border-color:#CFE3EF}
+  .badge.planta{background:#F3F6F8;color:var(--soft);border-color:var(--hair)}
+  .badge.resuelto{background:var(--ok-tint);color:var(--ok);border-color:#C9E2DA}
+  .seg tr.cerrado .tema,.seg tr.cerrado .acc{color:var(--faint)}
+  .seg-empty{padding:30px;text-align:center;color:var(--soft);font-size:13.5px;font-style:italic}
+
   /* ---------- Informes ---------- */
   .list{display:flex;flex-direction:column;gap:12px}
   .card{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:clamp(14px,3vw,30px);background:var(--card);border:1px solid var(--hair);border-radius:12px;padding:18px clamp(16px,3vw,24px);text-decoration:none;color:inherit;box-shadow:var(--shadow);transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}
@@ -78,6 +101,12 @@
     .card{grid-template-columns:auto 1fr;grid-template-areas:"stamp body" "go go";row-gap:12px}
     .stamp{grid-area:stamp}.body{grid-area:body}.go{grid-area:go;justify-self:start}
     .brand .sub{display:none}.nov-tag{min-width:auto}
+    .seg thead{display:none}
+    .seg tr{display:block;border-bottom:1px solid var(--hair);padding:14px 16px}
+    .seg tr:last-child{border-bottom:none}
+    .seg td{display:block;border:none;padding:0 0 7px}
+    .seg .desde{text-align:left;width:auto}
+    .seg .est{width:auto;padding-bottom:9px}
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -98,6 +127,9 @@
     <div class="section-label">Novedades de la semana</div>
     <div class="novedades" id="novedades"></div>
 
+    <div class="section-label">Temas en seguimiento</div>
+    <div class="seg" id="seguimientos"></div>
+
     <div class="section-label">Informes semanales · más reciente primero</div>
     <div class="list" id="lista"></div>
   </main>
@@ -112,9 +144,7 @@
    1) NOVEDADES DE LA SEMANA   (editá / vaciá cuando quieras)
       tipo: texto libre corto — Ausencia · Pendiente · Monitoreo · Nota
       alerta: true -> se resalta (para lo urgente)
-      Si no querés mostrar nada:  const NOVEDADES = [];
-   ===================================================================== */
-const NOVEDADES = [
+      Si no querés mostrar nada:  const NOVEDADES = [
   { tipo:"Pulidora 55", alerta:true,
     texto:"<b>7 de los 12 productos en rojo salieron de este puesto</b>, todos de bajo volumen (6 a 67 piezas): Asadera 80x60 Cepillo (4,9× vs costos), Polea 180 (3,2×), Tapa Sopera N28 Cepillo (2,4×), Saca Fuente Largo (2,2×) y las dos Pata Soporte Chafing (~1,9×). Matías ya relevó dos: el TC de costos no existía o estaba mal cargado. Los otros cinco están sin causa. <b>Decisión a tomar: medir y cargar los TC reales de toda esta familia de productos, en vez de tratarlos uno por uno cada semana.</b>" },
 
@@ -125,9 +155,67 @@ const NOVEDADES = [
     texto:"Matías cronometró dos productos de balancines (Cuchara Guisera Estampa Mango y Lechera 2 Pers. Marcado Pico) y confirmó que el TC de costos está mal cargado, pero <b>el valor no se corrigió en Wiidem</b>. Mientras no se actualice, esos productos van a seguir apareciendo desviados sin serlo." },
 
   { tipo:"Calidad dato", alerta:false,
-    texto:"3 eventos de tablet sin cerrar (53 hs), otra vez cruzando la noche. Dejan a <b>Plegadora 100</b> (60% del tiempo excluido) y <b>Esmerilado Izq. 64</b> (42%) sin veredicto esta semana. Segunda semana consecutiva con el mismo problema; hay planilla con el detalle por operario." }
+    texto:"3 eventos de tablet sin cerrar (53 hs), otra vez cruzando la noche. Dejan a <b>Plegadora 100</b> (60% del tiempo excluido) y <b>Esmerilado Izq. 64</b> (42%) sin veredicto esta semana. Venían siendo 6 eventos y 252 hs la semana anterior; mejoró, pero sigue abierto." }
 ];
-  
+   ===================================================================== */
+const NOVEDADES = [
+  { tipo:"Prensa 2", alerta:true,
+    texto:"<b>Pala despacho 00 y 01 – Estampado:</b> tardan ~3,2× lo que dice la planilla de costos (TC costos 0,58–0,67 min vs real 1,86–2,12 min, sobre 900 piezas). El tiempo extra es preparación manual de la pieza, no la máquina. <b>Decisión a tomar: subir el tiempo en costos, o cambiar el material de la matriz para dejar de usar papel con gasoil.</b>" },
+
+  { tipo:"Plegadoras", alerta:true,
+    texto:"<b>Cuatro productos por encima de costos:</b> Espátula Untar 8″ (3,3×) y 10″ (2,95×), Fondo Colador Cuadrado 16×16 – Plegado Borde (2,35×) y Asa Cacerola Donna – Plegado Punta (1,94×). <b>Decisión a tomar: actualizar los costos, o fabricar una matriz que haga los dos plegados de un golpe y reduzca el tiempo a la mitad.</b>" },
+
+  { tipo:"Calidad dato", alerta:false,
+    texto:"6 eventos de tablet quedaron sin cerrar (252 hs), varios de viernes a lunes. Invalidan el dato de Esmerilado y Plegadora 100 esta semana; se excluyeron del cálculo. En seguimiento con planta." },
+
+  { tipo:"Nota", alerta:false,
+    texto:"Plegadora 100: 13 hs en “Otra Tarea Designada” sin tipificar, segunda semana consecutiva. Se está revisando qué tarea es para darle su propia categoría." }
+];
+
+/* =====================================================================
+   1b) TEMAS EN SEGUIMIENTO   (se edita a mano, igual que NOVEDADES)
+   ---------------------------------------------------------------------
+   Un tema entra acá cuando cruza más de una semana. Se queda hasta que
+   se resuelve. Las semanas abiertas se calculan solas desde "desde".
+
+   Campos:
+     tema     -> de qué se trata (corto). Podés agregar   puesto:"Prensa 2"
+     problema -> qué está pasando y cuánto cuesta
+     solucion -> qué hay que hacer o decidir
+     estado   -> "decision" | "curso" | "planta" | "resuelto"
+                 decision = esperando que Dirección defina
+                 curso    = ya se está haciendo algo
+                 planta   = a la espera de dato o relevamiento de planta
+                 resuelto = cerrado (dejalo una o dos semanas y después borralo)
+     desde    -> AAAA-MM-DD, cuándo apareció el tema
+   Si no querés mostrar nada:  const SEGUIMIENTOS = [];
+   ===================================================================== */
+const SEGUIMIENTOS = [
+  { tema:"Pala despacho 00 y 01", puesto:"Prensa 2 · Estampado", estado:"decision", desde:"2026-08-18",
+    problema:"Tardan ~3,2× el tiempo de la planilla de costos (0,58–0,67 min de costos vs 1,86–2,12 min reales, sobre 900 piezas). El tiempo extra es la preparación manual de la pieza con papel y gasoil, no la máquina.",
+    solucion:"Definir: subir el tiempo en costos, o cambiar el material de la matriz para dejar de usar papel con gasoil." },
+
+  { tema:"Cuatro productos de plegado sobre costos", puesto:"Plegadoras", estado:"decision", desde:"2026-08-18",
+    problema:"Espátula Untar 8″ (3,3×) y 10″ (2,95×), Fondo Colador Cuadrado 16×16 Plegado Borde (2,35×) y Asa Cacerola Donna Plegado Punta (1,94×).",
+    solucion:"Definir: actualizar los costos, o fabricar una matriz que haga los dos plegados de un golpe y reduzca el tiempo a la mitad." },
+
+  { tema:"Eventos de tablet sin cerrar", puesto:"Planta · registro", estado:"curso", desde:"2026-08-10",
+    problema:"Eventos que quedan abiertos toda la noche o el fin de semana. Invalidan el tiempo real de los puestos afectados: esta semana dejaron a Plegadora 100 y Esmerilado 64 sin veredicto. Venían 6 eventos / 252 hs; esta semana 3 eventos / 53 hs.",
+    solucion:"Sostener la conversación en planta con el detalle por operario hasta llegar a cero. Hay planilla semanal con el detalle." },
+
+  { tema:"“Otra Tarea Designada” sin tipificar", puesto:"Plegadora 100", estado:"planta", desde:"2026-08-18",
+    problema:"15,9 hs esta semana en una categoría genérica (3 eventos de ~5 hs). Tercera semana consecutiva y en aumento: venía de 13 hs.",
+    solucion:"Averiguar qué tarea es realmente y darle su propia categoría en Wiidem, para que deje de contarse como tiempo sin explicar." },
+
+  { tema:"TC cronometrados que no se cargaron en Wiidem", puesto:"Balancines 44 y 45", estado:"decision", desde:"2026-08-24",
+    problema:"Matías cronometró Cuchara Guisera Estampa Mango y Lechera 2 Pers. Marcado Pico y confirmó que el TC de costos está mal, pero el valor no se corrigió en Wiidem.",
+    solucion:"Actualizar el TC en Wiidem (y en la planilla de costos) para que dejen de aparecer como desvío." },
+
+  { tema:"Familia Asadera / Chafing sin TC real", puesto:"Pulidora 55", estado:"decision", desde:"2026-08-24",
+    problema:"7 de los 12 rojos de la semana salieron de este puesto. Varios productos no tenían tiempo en la planilla de costos y se les asignó un valor estimado que no se parece al real (Asadera 80x60 Cepillo llegó a 4,9×).",
+    solucion:"Medir y cargar los TC reales de toda la familia de una vez, en lugar de corregir producto por producto cada semana." }
+];
+
 /* =====================================================================
    2) INFORMES  ·  lo ÚNICO que tocás por cada informe nuevo
    ---------------------------------------------------------------------
@@ -182,6 +270,29 @@ const nov=document.getElementById("novedades");
 nov.innerHTML = NOVEDADES.length
   ? NOVEDADES.map(n=>`<div class="nov-item"><span class="nov-tag${n.alerta?' alerta':''}">${n.tipo}</span><p>${n.texto}</p></div>`).join("")
   : '<p class="nov-empty">Sin novedades cargadas esta semana.</p>';
+
+// Seguimientos
+const EST={decision:{c:"decision",t:"Decisión pendiente"},curso:{c:"curso",t:"En curso"},
+           planta:{c:"planta",t:"Esperando planta"},resuelto:{c:"resuelto",t:"Resuelto"}};
+function semanasDesde(iso){
+  const{a,m,d}=P(iso); const ini=new Date(a,m-1,d);
+  const sem=Math.floor((Date.now()-ini.getTime())/604800000);
+  return sem<1?"esta semana":(sem===1?"hace 1 semana":`hace ${sem} semanas`);
+}
+const seg=document.getElementById("seguimientos");
+const abiertos=[...SEGUIMIENTOS].sort((x,y)=>x.desde.localeCompare(y.desde));
+seg.innerHTML = abiertos.length
+  ? `<table><thead><tr><th>Problema</th><th>Solución / decisión</th><th>Estado</th><th style="text-align:right">Abierto</th></tr></thead><tbody>`
+    + abiertos.map(s=>{
+        const e=EST[s.estado]||EST.curso;
+        return `<tr class="${s.estado==="resuelto"?"cerrado":""}">
+          <td class="tema">${s.tema}${s.puesto?`<small>${s.puesto}</small>`:""}</td>
+          <td class="acc"><b>${s.problema}</b><br>${s.solucion}</td>
+          <td class="est"><span class="badge ${e.c}">${e.t}</span></td>
+          <td class="desde"><b>${semanasDesde(s.desde)}</b>${corto(s.desde)}</td></tr>`;
+      }).join("")
+    + `</tbody></table>`
+  : '<p class="seg-empty">Sin temas en seguimiento.</p>';
 
 // Informes
 const orden=[...INFORMES].sort((x,y)=>y.desde.localeCompare(x.desde));
