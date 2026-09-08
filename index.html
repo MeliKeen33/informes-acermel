@@ -115,19 +115,19 @@
       Si no querés mostrar nada:  const NOVEDADES = [];
    ===================================================================== */
 const NOVEDADES = [
-  { tipo:"Prensa 2", alerta:true,
-    texto:"<b>Pala despacho 00 y 01 – Estampado:</b> tardan ~3,2× lo que dice la planilla de costos (TC costos 0,58–0,67 min vs real 1,86–2,12 min, sobre 900 piezas). El tiempo extra es preparación manual de la pieza, no la máquina. <b>Decisión a tomar: subir el tiempo en costos, o cambiar el material de la matriz para dejar de usar papel con gasoil.</b>" },
+  { tipo:"Pulidora 55", alerta:true,
+    texto:"<b>7 de los 12 productos en rojo salieron de este puesto</b>, todos de bajo volumen (6 a 67 piezas): Asadera 80x60 Cepillo (4,9× vs costos), Polea 180 (3,2×), Tapa Sopera N28 Cepillo (2,4×), Saca Fuente Largo (2,2×) y las dos Pata Soporte Chafing (~1,9×). Matías ya relevó dos: el TC de costos no existía o estaba mal cargado. Los otros cinco están sin causa. <b>Decisión a tomar: medir y cargar los TC reales de toda esta familia de productos, en vez de tratarlos uno por uno cada semana.</b>" },
 
-  { tipo:"Plegadoras", alerta:true,
-    texto:"<b>Cuatro productos por encima de costos:</b> Espátula Untar 8″ (3,3×) y 10″ (2,95×), Fondo Colador Cuadrado 16×16 – Plegado Borde (2,35×) y Asa Cacerola Donna – Plegado Punta (1,94×). <b>Decisión a tomar: actualizar los costos, o fabricar una matriz que haga los dos plegados de un golpe y reduzca el tiempo a la mitad.</b>" },
+  { tipo:"Prensa 2", alerta:true,
+    texto:"<b>9% productiva sobre 39 hs registradas.</b> 34,9 hs se fueron en Cambio Prensa: 6 eventos de ~350 min cada uno. Casi toda la semana fue preparación, no producción. <b>Decisión a tomar: revisar por qué el cambio de matriz está tardando ~6 hs y si se pueden agrupar las órdenes para hacer menos cambios.</b>" },
+
+  { tipo:"TC en Wiidem", alerta:false,
+    texto:"Matías cronometró dos productos de balancines (Cuchara Guisera Estampa Mango y Lechera 2 Pers. Marcado Pico) y confirmó que el TC de costos está mal cargado, pero <b>el valor no se corrigió en Wiidem</b>. Mientras no se actualice, esos productos van a seguir apareciendo desviados sin serlo." },
 
   { tipo:"Calidad dato", alerta:false,
-    texto:"6 eventos de tablet quedaron sin cerrar (252 hs), varios de viernes a lunes. Invalidan el dato de Esmerilado y Plegadora 100 esta semana; se excluyeron del cálculo. En seguimiento con planta." },
-
-  { tipo:"Nota", alerta:false,
-    texto:"Plegadora 100: 13 hs en “Otra Tarea Designada” sin tipificar, segunda semana consecutiva. Se está revisando qué tarea es para darle su propia categoría." }
+    texto:"3 eventos de tablet sin cerrar (53 hs), otra vez cruzando la noche. Dejan a <b>Plegadora 100</b> (60% del tiempo excluido) y <b>Esmerilado Izq. 64</b> (42%) sin veredicto esta semana. Segunda semana consecutiva con el mismo problema; hay planilla con el detalle por operario." }
 ];
-
+  
 /* =====================================================================
    2) INFORMES  ·  lo ÚNICO que tocás por cada informe nuevo
    ---------------------------------------------------------------------
