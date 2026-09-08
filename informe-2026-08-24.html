@@ -44,6 +44,11 @@ tr.dudoso td{background:#F4F6F8} tr.dudoso td.prod{box-shadow:inset 3px 0 0 #8B9
 .qual h4{font-family:var(--disp);font-size:14px;margin:0 0 6px}
 .qual table{margin-top:12px}
 .qual .tot{font-family:var(--mono);font-size:12.5px;color:var(--ink);margin-top:12px;padding-top:10px;border-top:1px solid var(--hair)}
+.qual .tot{font-family:var(--mono);font-size:12.5px;color:var(--ink);margin-top:12px;padding-top:10px;border-top:1px solid var(--hair)}
+.qual td.opr{font-family:var(--mono);font-size:12.5px;color:var(--ink);font-weight:600;text-align:center;white-space:nowrap}
+.qual td.fh{font-family:var(--mono);font-size:11.5px;line-height:1.45;white-space:nowrap}
+.qual td.fh b{color:var(--ink);font-weight:600;font-size:12px}
+.qual .pzsevt{display:block;font-family:var(--mono);font-size:10.5px;font-weight:400;color:var(--faint);margin-top:3px;white-space:nowrap}
 td.num{text-align:right;font-family:var(--mono);font-size:13px;color:var(--soft)} td.pzs{color:var(--ink);font-weight:500}
 td.num.strong{color:var(--ink);font-weight:600}
 .pcell{text-align:right;white-space:nowrap;width:1%}
@@ -443,22 +448,28 @@ producto cuando ya la relevó. “prelim” en vs normal = normal con solo 2–4
       que suman <b>53 hs</b>. Ninguna tarea real dura tanto: son eventos que quedaron abiertos
       (varios cruzan la noche o el fin de semana). <b>Se excluyeron del cálculo</b> para no mostrar desvíos
       falsos, y se listan acá para que se corrijan en planta.</p>
-      <table><thead><tr><th class="l">Puesto · evento</th><th>Abrió</th><th>Cerró</th><th>Duración</th></tr></thead>
-      <tbody><tr><td class="prod">Plegadora 100<span class="maq">Otra Tarea Designada
+      <table><thead><tr><th class="l">Puesto · evento</th><th>Operario</th><th>Abrió</th><th>Cerró</th><th>Duración</th></tr></thead>
+      <tbody><tr><td class="prod">Plegadora 100<span class="maq">Ciclo Rutinal › Otra Tarea Designada
              · Angulo Placa Masa - Plegado</span></td>
-            <td class="num">25/08/2026 06:02</td>
-            <td class="num">26/08/2026 06:15</td>
-            <td class="num strong">24.2 hs</td></tr><tr><td class="prod">Esmerilado Izq. Nro 64<span class="maq">Producción
+            <td class="num opr">5090</td>
+            <td class="num fh"><b>mar 25/08/2026</b><br>06:02</td>
+            <td class="num fh"><b>mié 26/08/2026</b><br>06:15</td>
+            <td class="num strong">24.2 hs<span class="pzsevt">0 pzs cargadas</span></td></tr><tr><td class="prod">Esmerilado Izq. Nro 64<span class="maq">Producción
              · Tubo Salsero 3 (20) - 18/8 - Esmerilado</span></td>
-            <td class="num">25/08/2026 15:20</td>
-            <td class="num">26/08/2026 06:03</td>
-            <td class="num strong">14.7 hs</td></tr><tr><td class="prod">Esmerilado Izq. Nro 64<span class="maq">Producción
+            <td class="num opr">4059</td>
+            <td class="num fh"><b>mar 25/08/2026</b><br>15:20</td>
+            <td class="num fh"><b>mié 26/08/2026</b><br>06:03</td>
+            <td class="num strong">14.7 hs<span class="pzsevt">0 pzs cargadas</span></td></tr><tr><td class="prod">Esmerilado Izq. Nro 64<span class="maq">Producción
              · Tubo Salsero 4 (22) - Esmerilado</span></td>
-            <td class="num">24/08/2026 15:50</td>
-            <td class="num">25/08/2026 06:12</td>
-            <td class="num strong">14.4 hs</td></tr></tbody></table>
+            <td class="num opr">4059</td>
+            <td class="num fh"><b>lun 24/08/2026</b><br>15:50</td>
+            <td class="num fh"><b>mar 25/08/2026</b><br>06:12</td>
+            <td class="num strong">14.4 hs<span class="pzsevt">0 pzs cargadas</span></td></tr></tbody></table>
       
       <p class="tot">Mientras esto siga pasando, el tiempo real de esas piezas no se puede medir.</p>
+      <p class="note">El operario es el legajo que la tablet tenía cargado al abrir el evento
+      (no necesariamente quien lo dejó abierto). Las piezas son las que quedaron registradas
+      dentro del evento: en cero, confirma que no era una tarea real.</p>
     </div>
 
 <div class="status"><h3>Estado de los datos</h3>
