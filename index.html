@@ -124,9 +124,6 @@
   </header>
 
   <main>
-    <div class="section-label">Novedades de la semana</div>
-    <div class="novedades" id="novedades"></div>
-
     <div class="section-label">Temas en seguimiento</div>
     <div class="seg" id="seguimientos"></div>
 
@@ -140,38 +137,6 @@
   </footer>
 
 <script>
-/* =====================================================================
-   1) NOVEDADES DE LA SEMANA   (editá / vaciá cuando quieras)
-      tipo: texto libre corto — Ausencia · Pendiente · Monitoreo · Nota
-      alerta: true -> se resalta (para lo urgente)
-      Si no querés mostrar nada:  const NOVEDADES = [
-  { tipo:"Pulidora 55", alerta:true,
-    texto:"<b>3% productiva sobre 30 hs registradas.</b> 27,5 hs se fueron en <b>Repaso Mercadería</b> (8 eventos de ~3,5 hs cada uno). Es la segunda semana consecutiva que este puesto queda al fondo del ranking, pero por un motivo distinto al de la semana pasada: ahora no son TC mal cargados, es que casi no pulió. <b>Decisión a tomar: definir si el repaso de mercadería es trabajo previsto de este puesto — y en ese caso presupuestarlo — o si es retrabajo por fallas que vienen de otro lado.</b>" },
-
-  { tipo:"Prensa 2", alerta:true,
-    texto:"<b>Servipres Vertical – Estampado Tapa: 2,4× vs costos sobre 1.000 piezas.</b> Matías relevó la causa y es la misma de Pala Despacho: antes de estampar hay que armar a mano un sándwich de nylon (lámina, pieza, lámina). En las paradas del puesto aparece además <b>Cortar Nylon: 7,6 hs en 15 eventos</b>. Entre preparar y cortar nylon se va casi un cuarto del tiempo del puesto. <b>Decisión a tomar: es el mismo problema de matriz que está pendiente desde el 18/08, ahora con un segundo producto afectado.</b>" },
-
-  { tipo:"TC en Wiidem", alerta:true,
-    texto:"Matías cronometró dos productos más de Balancín 45 —Pala para Hamburguesa (0,682 de costos vs 0,453 real) y Asa Cacerola chica (0,25 vs 0,124)— y en los dos anotó <b>“no se cambió el TC en Wiidem”</b>. Van cuatro productos medidos y sin corregir. Acá el costo está <b>sobrestimado</b>: se está cotizando más caro de lo que realmente cuesta hacerlos." },
-
-  { tipo:"Calidad dato", alerta:false,
-    texto:"2 eventos de tablet sin cerrar (44 hs), los dos en <b>Esmerilado Izq. 64</b> y los dos del <b>mismo legajo (4059)</b>, igual que en el informe del 24/08. Dejaron el 75% del tiempo de ese puesto fuera del cálculo. No es un descuido aislado: es un hábito de cierre de turno en ese puesto." }
-];
-   ===================================================================== */
-const NOVEDADES = [
-  { tipo:"Prensa 2", alerta:true,
-    texto:"<b>Pala despacho 00 y 01 – Estampado:</b> tardan ~3,2× lo que dice la planilla de costos (TC costos 0,58–0,67 min vs real 1,86–2,12 min, sobre 900 piezas). El tiempo extra es preparación manual de la pieza, no la máquina. <b>Decisión a tomar: subir el tiempo en costos, o cambiar el material de la matriz para dejar de usar papel con gasoil.</b>" },
-
-  { tipo:"Plegadoras", alerta:true,
-    texto:"<b>Cuatro productos por encima de costos:</b> Espátula Untar 8″ (3,3×) y 10″ (2,95×), Fondo Colador Cuadrado 16×16 – Plegado Borde (2,35×) y Asa Cacerola Donna – Plegado Punta (1,94×). <b>Decisión a tomar: actualizar los costos, o fabricar una matriz que haga los dos plegados de un golpe y reduzca el tiempo a la mitad.</b>" },
-
-  { tipo:"Calidad dato", alerta:false,
-    texto:"6 eventos de tablet quedaron sin cerrar (252 hs), varios de viernes a lunes. Invalidan el dato de Esmerilado y Plegadora 100 esta semana; se excluyeron del cálculo. En seguimiento con planta." },
-
-  { tipo:"Nota", alerta:false,
-    texto:"Plegadora 100: 13 hs en “Otra Tarea Designada” sin tipificar, segunda semana consecutiva. Se está revisando qué tarea es para darle su propia categoría." }
-];
-
 /* =====================================================================
    1b) TEMAS EN SEGUIMIENTO   (se edita a mano, igual que NOVEDADES)
    ---------------------------------------------------------------------
@@ -199,14 +164,6 @@ const SEGUIMIENTOS = [
     problema:"Espátula Untar 8″ (3,3×) y 10″ (2,95×), Fondo Colador Cuadrado 16×16 Plegado Borde (2,35×) y Asa Cacerola Donna Plegado Punta (1,94×).",
     solucion:"Definir: actualizar los costos, o fabricar una matriz que haga los dos plegados de un golpe y reduzca el tiempo a la mitad." },
 
-  { tema:"Eventos de tablet sin cerrar", puesto:"Planta · registro", estado:"curso", desde:"2026-08-10",
-    problema:"Eventos que quedan abiertos toda la noche. Invalidan el tiempo real del puesto: 252 hs (18/08), 53 hs (24/08), 44 hs (08/09). Con el legajo a la vista se ve el patrón: los últimos cinco eventos son de Esmerilado Izq. 64 y del mismo operario (4059), siempre abriendo a media tarde y «cerrando» a las 6 de la mañana.",
-    solucion:"No es un descuido aislado sino el cierre de turno tarde de ese puesto. Conversación con el operario y su supervisor, con la planilla semanal de detalle." },
-
-  { tema:"“Otra Tarea Designada” sin tipificar", puesto:"Plegadora 100", estado:"planta", desde:"2026-08-18",
-    problema:"15,9 hs esta semana en una categoría genérica (3 eventos de ~5 hs). Tercera semana consecutiva y en aumento: venía de 13 hs.",
-    solucion:"Averiguar qué tarea es realmente y darle su propia categoría en Wiidem, para que deje de contarse como tiempo sin explicar." },
-
   { tema:"TC cronometrados que no se cargaron en Wiidem", puesto:"Balancines 44 y 45", estado:"decision", desde:"2026-08-24",
     problema:"Van cuatro productos medidos con cronómetro y ninguno corregido: Cuchara Guisera Estampa Mango, Lechera 2 Pers. Marcado Pico, Pala para Hamburguesa (0,682 de costos vs 0,453 real) y Asa Cacerola chica (0,25 vs 0,124). En todos, Matías anotó «no se cambió el TC en Wiidem».",
     solucion:"Actualizar el TC en Wiidem (y en la planilla de costos) para que dejen de aparecer como desvío." },
@@ -217,7 +174,7 @@ const SEGUIMIENTOS = [
 
   { tema:"Repaso de mercadería sin presupuestar", puesto:"Pulidora 55", estado:"decision", desde:"2026-09-08",
     problema:"27,5 de 30 hs del puesto se fueron en Repaso Mercadería (8 eventos de ~3,5 hs). El puesto quedó 3% productivo. No está claro si es trabajo previsto o retrabajo por fallas de un proceso anterior.",
-    solucion:"Definir qué es el repaso de mercadería: si es parte del proceso, presupuestarlo como tal; si es retrabajo, rastrear de dónde vienen las piezas que hay que repasar." }
+    solucion:"Definir qué es el repaso de mercadería: si es parte del proceso, presupuestarlo como tal; si es retrabajo, rastrear de dónde vienen las piezas que hay que repasar." },
 ];
 
 /* =====================================================================
@@ -232,6 +189,10 @@ const SEGUIMIENTOS = [
      archivo -> nombre EXACTO del .html
    ===================================================================== */
 const INFORMES = [
+  { desde:"2026-09-14", hasta:"2026-09-18",
+    titulo:"Informe semanal de planta — Producción y desvíos de ciclo",
+    resumen:"5.320 piezas en 29 productos: 7 en rojo, 3 en amarillo, 18 en verde. 1 sin dato confiable.",
+    archivo:"informe-2026-09-14.html" },
   { desde:"2026-09-08", hasta:"2026-09-11",
     titulo:"Informe semanal de planta — Producción y desvíos de ciclo",
     resumen:"2.510 piezas en 18 productos: 2 en rojo, 2 en amarillo, 14 en verde.",
@@ -272,12 +233,6 @@ function sello(d1,d2){                              // bloque compacto de la tar
   return {rng,mes,anio:B.a};
 }
 const corto=iso=>{const{a,m,d}=P(iso);return `${d} ${ABREV[m-1]} ${a}`;};
-
-// Novedades
-const nov=document.getElementById("novedades");
-nov.innerHTML = NOVEDADES.length
-  ? NOVEDADES.map(n=>`<div class="nov-item"><span class="nov-tag${n.alerta?' alerta':''}">${n.tipo}</span><p>${n.texto}</p></div>`).join("")
-  : '<p class="nov-empty">Sin novedades cargadas esta semana.</p>';
 
 // Seguimientos
 const EST={decision:{c:"decision",t:"Decisión pendiente"},curso:{c:"curso",t:"En curso"},
