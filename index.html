@@ -157,24 +157,27 @@
    ===================================================================== */
 const SEGUIMIENTOS = [
   { tema:"Preparación manual con nylon", puesto:"Prensa 2 · Estampado", estado:"decision", desde:"2026-08-18",
-    problema:"Pala Despacho 00 y 01 tardan ~3,2× el tiempo de costos (sobre 900 pzs), y el 08/09 se sumó Servipres Vertical – Estampado Tapa a 2,4× (sobre 1.000 pzs). En los dos, el tiempo extra es armar a mano el sándwich de nylon antes de estampar, no la máquina. Se suman 7,6 hs de «Cortar Nylon» en 15 eventos.",
+    problema:"Pala Despacho 00 y 01 tardan ~3,2× el tiempo de costos (sobre 900 pzs), y el 08/09 se sumó Servipres Vertical – Estampado Tapa a 2,4× (sobre 1.000 pzs). En los dos, el tiempo extra es armar a mano el sándwich de nylon antes de estampar, no la máquina. Las horas de «Cortar Nylon» en Prensa 2 bajaron de 7,6 hs (08/09) a 2,7 hs (21/09), pero el tiempo de preparación por pieza sigue sin estar en costos.",
     solucion:"Definir: subir el tiempo en costos, o cambiar el material de la matriz para dejar de usar papel con gasoil." },
 
-  { tema:"Cuatro productos de plegado sobre costos", puesto:"Plegadoras", estado:"decision", desde:"2026-08-18",
-    problema:"Espátula Untar 8″ (3,3×) y 10″ (2,95×), Fondo Colador Cuadrado 16×16 Plegado Borde (2,35×) y Asa Cacerola Donna Plegado Punta (1,94×).",
-    solucion:"Definir: actualizar los costos, o fabricar una matriz que haga los dos plegados de un golpe y reduzca el tiempo a la mitad." },
+  { tema:"Productos de plegado sobre costos", puesto:"Plegadoras 7 y 100", estado:"decision", desde:"2026-08-18",
+    problema:"Empezó con cuatro productos en agosto (Espátula Untar 8″ y 10″, Fondo Colador Cuadrado, Asa Cacerola Donna). La semana del 21/09 <b>8 de los 17 productos en rojo salieron de plegadoras</b>, con Comandera 90 cm a 7,0× y Comandera 60 cm a 4,2× sobre tiradas chicas. No es un producto puntual: es toda la familia de plegado la que está mal tiempada.",
+    solucion:"Dejar de corregir producto por producto. Revisar los TC de plegado como conjunto y, en paralelo, evaluar la matriz que hace los dos plegados de un golpe." },
 
-  { tema:"TC cronometrados que no se cargaron en Wiidem", puesto:"Balancines 44 y 45", estado:"decision", desde:"2026-08-24",
-    problema:"Van cuatro productos medidos con cronómetro y ninguno corregido: Cuchara Guisera Estampa Mango, Lechera 2 Pers. Marcado Pico, Pala para Hamburguesa (0,682 de costos vs 0,453 real) y Asa Cacerola chica (0,25 vs 0,124). En todos, Matías anotó «no se cambió el TC en Wiidem».",
-    solucion:"Actualizar el TC en Wiidem (y en la planilla de costos) para que dejen de aparecer como desvío." },
+  { tema:"TC cronometrados que no se cargaron en Wiidem", puesto:"Balancines · Plegadoras · Pulidora", estado:"decision", desde:"2026-08-24",
+    problema:"<b>Ya son once productos medidos con cronómetro y ninguno corregido</b>, y la semana del 21/09 sumó siete de una vez: Colador Triangular N°30 y N°35, Tapa Alcuza 1/2 Lt, Mango Colador, Espátula Reforzada 30×10, Legumbrera Oval 26 y Pinza de Hielo Lujo. En dos de ellos (Tapa Alcuza y Legumbrera) directamente no había tiempo en la planilla de costos y se cargó un 0,5 estimado. En todos, Matías anota «no se cambió en Wiidem».",
+    solucion:"El cuello de botella ya no es medir: Matías mide bien y rápido. Falta definir quién carga el TC medido en Wiidem y en la planilla de costos, y con qué frecuencia. Mientras no exista ese paso, cada medición se pierde y el producto vuelve a aparecer desviado la semana siguiente." },
 
   { tema:"Familia Asadera / Chafing sin TC real", puesto:"Pulidora 55", estado:"decision", desde:"2026-08-24",
-    problema:"7 de los 12 rojos de la semana del 24/08 salieron de este puesto. Varios productos no tenían tiempo en la planilla de costos y se les asignó un valor estimado que no se parece al real (Asadera 80x60 Cepillo llegó a 4,9×).",
+    problema:"7 de los 12 rojos de la semana del 24/08 salieron de este puesto. Varios productos no tenían tiempo en la planilla de costos y se les asignó un valor estimado que no se parece al real: Asadera 80x60 Cepillo llegó a 4,9× y el 21/09 <b>Asas Cacerola 24-30 Gastronómica – Polea 180 dio 9,13×</b> sobre 19 piezas. Legumbrera Oval 26 confirmó el patrón: no había tiempo en costos, se puso 0,5 y el real es 1,79.",
     solucion:"Medir y cargar los TC reales de toda la familia de una vez, en lugar de corregir producto por producto cada semana." },
 
   { tema:"Repaso de mercadería sin presupuestar", puesto:"Pulidora 55", estado:"decision", desde:"2026-09-08",
-    problema:"27,5 de 30 hs del puesto se fueron en Repaso Mercadería (8 eventos de ~3,5 hs). El puesto quedó 3% productivo. No está claro si es trabajo previsto o retrabajo por fallas de un proceso anterior.",
+    problema:"Bajó de 27,5 hs (08/09) a 14,2 hs (21/09), y el puesto pasó de 3% a 38% productivo. Mejoró, pero el repaso sigue siendo más de la mitad del tiempo no productivo del puesto y todavía no está definido si es trabajo previsto o retrabajo por fallas de un proceso anterior.",
     solucion:"Definir qué es el repaso de mercadería: si es parte del proceso, presupuestarlo como tal; si es retrabajo, rastrear de dónde vienen las piezas que hay que repasar." },
+  { tema:"Cambio de esmeriladora: 3,6 hs por cambio", puesto:"Esmerilado Izq. 64", estado:"planta", desde:"2026-09-21",
+    problema:"El puesto quedó 16% productivo sobre 41 hs, con <b>32,6 hs en Cambio Esmeriladora repartidas en 9 eventos de ~3,6 hs cada uno</b>. Es la primera semana con el dato limpio de este puesto (antes quedaba tapado por los eventos sin cerrar), y lo que aparece debajo no es un problema de registro sino de proceso.",
+    solucion:"Relevar en planta qué incluye un cambio de esmeriladora y por qué tarda casi media jornada. Recién con eso se puede decidir si es tiempo a presupuestar o a reducir." },
 ];
 
 /* =====================================================================
@@ -189,6 +192,10 @@ const SEGUIMIENTOS = [
      archivo -> nombre EXACTO del .html
    ===================================================================== */
 const INFORMES = [
+  { desde:"2026-09-21", hasta:"2026-09-25",
+    titulo:"Informe semanal de planta — Producción y desvíos de ciclo",
+    resumen:"8.390 piezas en 74 productos: 17 en rojo, 7 en amarillo, 50 en verde.",
+    archivo:"informe-2026-09-21.html" },
   { desde:"2026-09-14", hasta:"2026-09-18",
     titulo:"Informe semanal de planta — Producción y desvíos de ciclo",
     resumen:"5.320 piezas en 29 productos: 7 en rojo, 3 en amarillo, 18 en verde. 1 sin dato confiable.",
