@@ -1,0 +1,616 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Informe Semanal · Acermel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F1F3F5;--panel:#FFF;--ink:#15181C;--soft:#5C6570;--faint:#8B95A0;--hair:#DCE0E5;
+--slow:#BE3B32;--slow-bg:#FBECEA;--fast:#137A66;--fast-bg:#E7F4F0;--amber:#B7791F;--amber-bg:#F9F0DD;
+--disp:'Space Grotesk',sans-serif;--body:'Inter',system-ui,sans-serif;--mono:'IBM Plex Mono',monospace;}
+*{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px 80px}
+.masthead{border-bottom:2px solid var(--ink);padding:34px 0 16px}
+.kick{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);margin:0 0 8px}
+.masthead h1{font-family:var(--disp);font-weight:700;font-size:clamp(28px,5vw,44px);line-height:1.03;letter-spacing:-.02em;margin:0}
+.period{display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:14px;font-family:var(--mono);font-size:12.5px;color:var(--soft)}
+.period b{color:var(--ink);font-weight:600}
+.verdict-box{background:var(--ink);color:#F1F3F5;padding:24px 26px;margin:22px 0 18px}
+.verdict-box .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9AA6B2;margin:0 0 12px}
+.verdict-box ol{margin:0;padding:0;list-style:none;counter-reset:v}
+.verdict-box li{counter-increment:v;position:relative;padding:9px 0 9px 34px;border-top:1px solid #2A3037;font-size:14.5px}
+.verdict-box li:first-child{border-top:none} .verdict-box li::before{content:counter(v,decimal-leading-zero);position:absolute;left:0;top:9px;font-family:var(--mono);font-size:12px;color:#6DD3BE;font-weight:600}
+.verdict-box b{color:#fff;font-weight:600}
+.legend{background:var(--panel);border:1px solid var(--hair);padding:12px 18px;margin:0 0 12px;font-size:12.5px;color:var(--soft);display:flex;flex-wrap:wrap;gap:6px 22px;align-items:center}
+.legend b{font-family:var(--mono);color:var(--ink);font-weight:600}
+.sw{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.sw.red{background:var(--slow)} .sw.yellow{background:var(--amber)} .sw.green{background:var(--fast)}
+.tcnote{background:var(--panel);border:1px solid var(--hair);padding:12px 18px;margin:0 0 34px;font-size:12.5px;color:var(--soft);display:flex;flex-wrap:wrap;gap:6px 26px}
+.tcnote b{font-family:var(--mono);color:var(--ink);font-weight:600}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--hair);padding-bottom:10px;margin:0 0 6px}
+.sec-no{font-family:var(--mono);font-size:12px;color:var(--faint);font-weight:600} .sec-head h2{font-family:var(--disp);font-weight:600;font-size:21px;margin:0}
+.sec-sub{color:var(--soft);font-size:13.5px;margin:2px 0 14px}
+table{width:100%;border-collapse:collapse}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);font-weight:500;text-align:right;padding:0 9px 8px;border-bottom:1px solid var(--hair)}
+th.l{text-align:left}
+td{padding:11px 9px;border-bottom:1px solid var(--hair);vertical-align:middle}
+td.prod{font-family:var(--disp);font-weight:600;font-size:14px;min-width:250px}
+td.prod .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px;vertical-align:middle}
+td.prod .maq{display:block;font-family:var(--mono);font-weight:400;font-size:11px;color:var(--faint);margin:3px 0 0 16px}
+.dot.red{background:var(--slow)} .dot.yellow{background:var(--amber)} .dot.green{background:var(--fast)}
+.dot.dudoso{background:#8B95A0}
+tr.dudoso td{background:#F4F6F8} tr.dudoso td.prod{box-shadow:inset 3px 0 0 #8B95A0}
+.dudnota{margin:6px 0 0 16px;padding:7px 10px;background:#EEF1F4;border-left:2px solid #8B95A0;border-radius:0 4px 4px 0;font-family:var(--body);font-weight:400;font-size:11.5px;color:var(--soft);line-height:1.5}
+.parcialnota{margin:6px 0 0;padding:7px 10px;background:#EEF1F4;border-left:2px solid #8B95A0;border-radius:0 4px 4px 0;font-size:11.5px;color:var(--soft);line-height:1.5}
+.qual{background:var(--panel);border:1px solid var(--hair);border-left:3px solid #8B95A0;padding:20px 22px;margin-top:14px}
+.qual h4{font-family:var(--disp);font-size:14px;margin:0 0 6px}
+.qual table{margin-top:12px}
+.qual .tot{font-family:var(--mono);font-size:12.5px;color:var(--ink);margin-top:12px;padding-top:10px;border-top:1px solid var(--hair)}
+.qual .tot{font-family:var(--mono);font-size:12.5px;color:var(--ink);margin-top:12px;padding-top:10px;border-top:1px solid var(--hair)}
+.qual td.opr{font-family:var(--mono);font-size:12.5px;color:var(--ink);font-weight:600;text-align:center;white-space:nowrap}
+.qual td.fh{font-family:var(--mono);font-size:11.5px;line-height:1.45;white-space:nowrap}
+.qual td.fh b{color:var(--ink);font-weight:600;font-size:12px}
+.qual .pzsevt{display:block;font-family:var(--mono);font-size:10.5px;font-weight:400;color:var(--faint);margin-top:3px;white-space:nowrap}
+td.num{text-align:right;font-family:var(--mono);font-size:13px;color:var(--soft)} td.pzs{color:var(--ink);font-weight:500}
+td.num.strong{color:var(--ink);font-weight:600}
+.pcell{text-align:right;white-space:nowrap;width:1%}
+.pill{display:inline-flex;align-items:baseline;gap:5px;font-family:var(--mono);padding:3px 8px;border-radius:4px;font-size:13px}
+.pill b{font-weight:600} .pill i{font-style:normal;font-size:10px;opacity:.7}
+.pill.slow{color:var(--slow);background:var(--slow-bg)} .pill.fast{color:var(--fast);background:var(--fast-bg)}
+.pill.amber{color:var(--amber);background:var(--amber-bg)}
+.pill.neutral{color:var(--soft);background:#EDEFF2}
+.pill.prelim{opacity:.5} .pill.none{color:var(--faint);background:#EEF1F4}
+.tnprelim{color:var(--faint)!important;font-style:italic}
+.nd{font-family:var(--mono);font-size:10px;color:var(--faint);margin-left:6px}
+.tag{font-family:var(--mono);font-size:9px;color:var(--amber);background:var(--amber-bg);padding:1px 4px;border-radius:3px;text-transform:uppercase;margin-left:4px}
+.causa{margin:6px 0 0 16px;padding:7px 10px;background:var(--amber-bg);border-left:2px solid var(--amber);border-radius:0 4px 4px 0;font-family:var(--body);font-weight:400;font-size:12px;color:#5a4a24;line-height:1.5}
+.causa .ck{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--amber);display:block;margin-bottom:2px}
+.causa b{color:#3d3213}
+details{margin:7px 0 0 16px} summary{cursor:pointer;font-family:var(--mono);font-size:10.5px;color:var(--faint)}
+.tr{font-family:var(--mono);font-size:11.5px;color:var(--soft);margin-top:6px;padding:8px 10px;background:#F6F8FA;border-radius:4px}
+.ctx{font-size:12px;color:var(--soft);margin-top:6px;padding:8px 10px;background:#FBF6EC;border-radius:4px;line-height:1.6} .ctx b{color:var(--ink)}
+tr.red td.prod{box-shadow:inset 3px 0 0 var(--slow)} tr.red td{background:#FDF6F5}
+tr.yellow td.prod{box-shadow:inset 3px 0 0 var(--amber)} tr.yellow td{background:#FDFAF2}
+.maqblock{margin:20px 0 10px}
+.maqhead{display:flex;align-items:baseline;justify-content:space-between;background:#E8EBEE;padding:9px 14px;border-radius:5px 5px 0 0}
+.maqhead h3{font-family:var(--disp);font-size:16px;margin:0} .maqhead span{font-family:var(--mono);font-size:11.5px;color:var(--soft)}
+.mred{color:var(--slow);font-weight:600;margin-left:8px}
+.barcell{width:32%} .hbar{height:9px;background:var(--amber);border-radius:2px;opacity:.85}
+.leg2{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 20px;font-size:12px;color:var(--soft)}
+.leg2 span{display:flex;align-items:center;gap:5px}
+.sw2{display:inline-block;width:10px;height:10px;border-radius:2px}
+.bar{margin:0 0 18px}
+.bar.refbar{padding-bottom:16px;border-bottom:1px solid var(--hair);margin-bottom:22px}
+.bhead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:5px}
+.bm{font-family:var(--disp);font-size:14.5px;font-weight:600}
+.refbar .bm{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--soft)}
+.bmeta{font-family:var(--mono);font-size:11.5px;color:var(--soft);white-space:nowrap}
+.bmeta b{font-weight:600}
+.btrack{display:flex;height:22px;border-radius:3px;overflow:hidden;background:#E4E7EA}
+.refbar .btrack{height:14px}
+.pdet{margin:6px 0 0} .pdet summary{font-family:var(--mono);font-size:10.5px;color:var(--faint);cursor:pointer}
+.pdet ul{list-style:none;margin:8px 0 0;padding:9px 12px;background:#F6F8FA;border-radius:4px;font-size:12.5px;color:var(--soft)}
+.pdet li{padding:3px 0;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.pdet b{color:var(--ink);font-family:var(--mono);font-size:12.5px}
+.pd{display:inline-block;width:8px;height:8px;border-radius:2px;flex:none}
+.pn{font-family:var(--mono);font-size:11px;color:var(--faint)}
+.status{background:var(--panel);border:1px solid var(--hair);padding:20px 22px;margin-top:30px}
+.status h3{font-family:var(--disp);font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--soft);margin:0 0 12px}
+.note{font-size:12.5px;color:var(--soft);margin-top:6px}
+.stub{border:1px dashed var(--hair);padding:18px;color:var(--faint);font-size:13px;background:repeating-linear-gradient(135deg,transparent,transparent 10px,#F7F8F9 10px,#F7F8F9 20px);margin-top:12px} .stub b{color:var(--soft)}
+footer{margin-top:50px;padding-top:16px;border-top:1px solid var(--hair);font-family:var(--mono);font-size:11px;color:var(--faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media(max-width:640px){td,th{padding-left:5px;padding-right:5px} td.prod .causa,td.prod details{margin-left:0}}
+</style></head><body><div class="wrap">
+
+<header class="masthead">
+  <p class="kick">Acermel · Proyecto Wiidem · Informe semanal de planta</p>
+  <h1>La semana,<br>de un vistazo.</h1>
+  <div class="period"><span>Semana&nbsp; <b>28/09/2026 – 02/10/2026</b></span>
+  <span>Piezas&nbsp; <b>5,271</b></span><span>Referencia&nbsp; <b>histórico a 25/09/2026</b></span></div>
+</header>
+
+<div class="verdict-box"><p class="lbl">Lo que hay que mirar esta semana</p><ol><li><b>Pulidora Nro 55</b> estuvo productiva solo el <b>13%</b> de sus 23 hs registradas, con 19 hs en paradas mejorables.</li><li><b>Gancho colador triangular - Plegado</b> (340 pzs) a 3.4× vs costos — sin causa registrada aún</li><li><b>Legumbrera Oval 26cm  - Estampa</b> (339 pzs) a 1.4× vs costos — sin causa registrada aún</li><li><b>13</b> en rojo · <b>8</b> en amarillo · <b>39</b> en verde · <b>1</b> sin dato confiable · 61 productos.</li></ol></div>
+
+<div class="legend">
+  <span><span class="sw red"></span><b>Rojo</b> — +25% o más sobre costos (pierde plata)</span>
+  <span><span class="sw yellow"></span><b>Amarillo</b> — 10–25% sobre costos, o más lento que su normal</span>
+  <span><span class="sw green"></span><b>Verde</b> — en tolerancia o mejor</span>
+</div>
+<div class="tcnote">
+  <span><b>TC costos</b> — cargado en Wiidem. Lo que se supone.</span>
+  <span><b>TC normal</b> — mediana del histórico. Lo habitual.</span>
+  <span><b>TC semana</b> — lo que dio ahora.</span>
+</div>
+<div class="tcnote" style="margin-top:-26px">
+  <span><b>vs costos</b> = lente plata (¿perdemos margen?). Es la que define el color de la fila.</span>
+  <span><b>vs normal</b> = lente cambio (¿pasó algo distinto esta semana?). Nunca marca rojo.</span>
+</div>
+
+<div class="sec-head"><span class="sec-no">01</span><h2>Producción de la semana, por máquina</h2></div>
+<p class="sec-sub">Todos los productos, ordenados peor-primero dentro de cada puesto. La causa de Matías aparece pegada al
+producto cuando ya la relevó. “prelim” en vs normal = normal con solo 2–4 días de historia.</p>
+<div class="maqblock"><div class="maqhead"><h3>Balancín N° 45</h3><span>22 productos · 2.908 piezas <span class="mred">4 en rojo</span></span></div>
+      <table><thead><tr><th class="l">Producto</th><th>Piezas</th><th>TC costos</th><th>TC normal</th><th>TC semana</th><th>vs normal</th><th>vs costos</th></tr></thead>
+      <tbody><tr class="red">
+      <td class="prod"><span class="dot red"></span>Prensa Papa - Ovalar Mango Balancín<span class="maq">93482OMB · Balancín N° 45</span><details><summary>desglose · código 93482OMB</summary><div class="tr">Días → 29/09/2026: 20 pza</div></details></td>
+      <td class="num pzs">20</td>
+      <td class="num">0.167</td>
+      <td class="num ">0.261</td>
+      <td class="num strong">0.433</td>
+      <td class="pcell"><span class="pill amber"><b>1.66×</b><i>66%</i></span><span class="nd">· 7 d</span></td>
+      <td class="pcell"><span class="pill slow"><b>2.60×</b><i>160%</i></span></td></tr><tr class="red">
+      <td class="prod"><span class="dot red"></span>Aro Porta Balde Champang c/Pie y Aro - Marcado Escalón Balancín<span class="maq">61577ME · Balancín N° 45</span><details><summary>desglose · código 61577ME</summary><div class="tr">Días → 01/10/2026: 10 pza · 02/10/2026: 62 pza</div></details></td>
+      <td class="num pzs">72</td>
+      <td class="num">0.250</td>
+      <td class="num tnprelim">0.269</td>
+      <td class="num strong">0.587</td>
+      <td class="pcell"><span class="pill none">1 solo día</span></td>
+      <td class="pcell"><span class="pill slow"><b>2.35×</b><i>135%</i></span></td></tr><tr class="red">
+      <td class="prod"><span class="dot red"></span>Porta Botella Cerveza Termico - Marcado Escalón Balancín<span class="maq">260164MEB · Balancín N° 45</span><details><summary>desglose · código 260164MEB</summary><div class="tr">Días → 29/09/2026: 47 pza</div></details></td>
+      <td class="num pzs">47</td>
+      <td class="num">0.300</td>
+      <td class="num tnprelim">0.444</td>
+      <td class="num strong">0.531</td>
+      <td class="pcell"><span class="pill none">1 solo día</span></td>
+      <td class="pcell"><span class="pill slow"><b>1.77×</b><i>77%</i></span></td></tr><tr class="red">
+      <td class="prod"><span class="dot red"></span>Mango Sartén Corto - Ovalar Mango Balancín<span class="maq">3000311OMB · Balancín N° 45</span><details><summary>desglose · código 3000311OMB</summary><div class="tr">Días → 29/09/2026: 170 pza</div></details></td>
+      <td class="num pzs">170</td>
+      <td class="num">0.167</td>
+      <td class="num tnprelim">0.161</td>
+      <td class="num strong">0.214</td>
+      <td class="pcell"><span class="pill none">1 solo día</span></td>
+      <td class="pcell"><span class="pill slow"><b>1.28×</b><i>28%</i></span></td></tr><tr class="yellow">
+      <td class="prod"><span class="dot yellow"></span>Prensa papa - Aplastar Mango Balancín<span class="maq">93482AMB · Balancín N° 45</span><details><summary>desglose · código 93482AMB</summary><div class="tr">Días → 29/09/2026: 20 pza</div></details></td>
+      <td class="num pzs">20</td>
+      <td class="num">0.167</td>
+      <td class="num ">0.225</td>
+      <td class="num strong">0.204</td>
+      <td class="pcell"><span class="pill neutral"><b>0.90×</b><i>10%</i></span><span class="nd">· 7 d</span></td>
+      <td class="pcell"><span class="pill amber"><b>1.22×</b><i>22%</i></span></td></tr><tr class="yellow">
+      <td class="prod"><span class="dot yellow"></span>Espumadera Nro 14 Enteriza - Estampa Espumadera Balancín<span class="maq">93284ESTB · Balancín N° 45</span><details><summary>desglose · código 93284ESTB</summary><div class="tr">Días → 02/10/2026: 100 pza</div></details></td>
+      <td class="num pzs">100</td>
+      <td class="num">0.333</td>
+      <td class="num tnprelim">0.252</td>
+      <td class="num strong">0.400</td>
+      <td class="pcell"><span class="pill amber prelim"><b>1.59×</b><i>59%</i></span><span class="nd">· 4 d</span> <span class="tag">prelim</span></td>
+      <td class="pcell"><span class="pill amber"><b>1.20×</b><i>20%</i></span></td></tr><tr class="yellow">
+      <td class="prod"><span class="dot yellow"></span>Prensa Papas - Plegado Lenguenta Balancín<span class="maq">93482PLB · Balancín N° 45</span><details><summary>desglose · código 93482PLB</summary><div class="tr">Días → 30/09/2026: 116 pza</div></details></td>
+      <td class="num pzs">116</td>
+      <td class="num">0.333</td>
+      <td class="num tnprelim">0.188</td>
+      <td class="num strong">0.250</td>
+      <td class="pcell"><span class="pill amber prelim"><b>1.33×</b><i>33%</i></span><span class="nd">· 2 d</span> <span class="tag">prelim</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.75×</b><i>25%</i></span></td></tr><tr class="yellow">
+      <td class="prod"><span class="dot yellow"></span>Manija Bandeja Cuero - Perforado Balancín<span class="maq">3000582PB · Balancín N° 45</span><div class="causa"><span class="ck">Causa (Matías 14/09/2026)</span><b>TC mal cargado</b> — Se registró una performance del 135% durante la elaboración de este artículo. El mismo posee un TC de 0.75. sobre el cual el tiempo Wiidem es de 0.198. mientras que el tiempo real cronometrado fue de 0.185 · Dirección / Costos</div><details><summary>desglose · código 3000582PB</summary><div class="tr">Días → 02/10/2026: 300 pza</div></details></td>
+      <td class="num pzs">300</td>
+      <td class="num">0.750</td>
+      <td class="num ">0.200</td>
+      <td class="num strong">0.234</td>
+      <td class="pcell"><span class="pill amber"><b>1.17×</b><i>17%</i></span><span class="nd">· 5 d</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.31×</b><i>69%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Tapa Salero Fino - Marca Balancín<span class="maq">61602TSFMB · Balancín N° 45</span><details><summary>desglose · código 61602TSFMB</summary><div class="tr">Días → 30/09/2026: 21 pza</div></details></td>
+      <td class="num pzs">21</td>
+      <td class="num">0.588</td>
+      <td class="num ">0.553</td>
+      <td class="num strong">0.617</td>
+      <td class="pcell"><span class="pill neutral"><b>1.12×</b><i>12%</i></span><span class="nd">· 20 d</span></td>
+      <td class="pcell"><span class="pill neutral"><b>1.05×</b><i>5%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Mango Sartén Corto - Aplastar Punta 2.5 Balancín<span class="maq">3000311AP25B · Balancín N° 45</span><details><summary>desglose · código 3000311AP25B</summary><div class="tr">Días → 29/09/2026: 173 pza</div></details></td>
+      <td class="num pzs">173</td>
+      <td class="num">0.167</td>
+      <td class="num tnprelim">0.127</td>
+      <td class="num strong">0.155</td>
+      <td class="pcell"><span class="pill none">1 solo día</span></td>
+      <td class="pcell"><span class="pill neutral"><b>0.93×</b><i>7%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Mango Sartén Corto - Aplastar Punta 3.5 Balancín<span class="maq">3000311AP35B · Balancín N° 45</span><details><summary>desglose · código 3000311AP35B</summary><div class="tr">Días → 29/09/2026: 173 pza</div></details></td>
+      <td class="num pzs">173</td>
+      <td class="num">0.167</td>
+      <td class="num tnprelim">0.144</td>
+      <td class="num strong">0.153</td>
+      <td class="pcell"><span class="pill none">1 solo día</span></td>
+      <td class="pcell"><span class="pill neutral"><b>0.92×</b><i>8%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Prensa Papas - Aplastado 1 Paso Lenguenta Balancín<span class="maq">93482A1LB · Balancín N° 45</span><details><summary>desglose · código 93482A1LB</summary><div class="tr">Días → 30/09/2026: 113 pza</div></details></td>
+      <td class="num pzs">113</td>
+      <td class="num">0.333</td>
+      <td class="num tnprelim">0.459</td>
+      <td class="num strong">0.234</td>
+      <td class="pcell"><span class="pill none">1 solo día</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.70×</b><i>30%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Pala para Torta Triangular Enteriza - Estampa Mango Balancín<span class="maq">93494EMB · Balancín N° 45</span><details><summary>desglose · código 93494EMB</summary><div class="tr">Días → 28/09/2026: 513 pza</div></details></td>
+      <td class="num pzs">513</td>
+      <td class="num">0.681</td>
+      <td class="num ">0.445</td>
+      <td class="num strong">0.447</td>
+      <td class="pcell"><span class="pill neutral"><b>1.00×</b><i>0%</i></span><span class="nd">· 10 d</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.66×</b><i>34%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Jarra Agua 2 LTS. ENTERIZA - Estampado Fondo Balancín<span class="maq">104028EFB · Balancín N° 45</span><details><summary>desglose · código 104028EFB</summary><div class="tr">Días → 30/09/2026: 93 pza</div></details></td>
+      <td class="num pzs">93</td>
+      <td class="num">0.666</td>
+      <td class="num tnprelim">0.447</td>
+      <td class="num strong">0.409</td>
+      <td class="pcell"><span class="pill none">1 solo día</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.61×</b><i>39%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Pinza Curva de Precisión - Amoldar Balancín<span class="maq">93450PCPAB · Balancín N° 45</span><details><summary>desglose · código 93450PCPAB</summary><div class="tr">Días → 30/09/2026: 181 pza · 01/10/2026: 154 pza</div></details></td>
+      <td class="num pzs">335</td>
+      <td class="num">0.500</td>
+      <td class="num ">0.301</td>
+      <td class="num strong">0.305</td>
+      <td class="pcell"><span class="pill neutral"><b>1.01×</b><i>1%</i></span><span class="nd">· 6 d</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.61×</b><i>39%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Pala p/Torta Triag.Punta Redonda - Estampa Mango Balancín<span class="maq">93406ESTMB · Balancín N° 45</span><details><summary>desglose · código 93406ESTMB</summary><div class="tr">Días → 29/09/2026: 258 pza</div></details></td>
+      <td class="num pzs">258</td>
+      <td class="num">0.681</td>
+      <td class="num ">0.393</td>
+      <td class="num strong">0.409</td>
+      <td class="pcell"><span class="pill neutral"><b>1.04×</b><i>4%</i></span><span class="nd">· 8 d</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.60×</b><i>40%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Prensa Papas - Aplastado 2 Paso Lenguenta Balancín<span class="maq">93482A2LB · Balancín N° 45</span><details><summary>desglose · código 93482A2LB</summary><div class="tr">Días → 30/09/2026: 112 pza</div></details></td>
+      <td class="num pzs">112</td>
+      <td class="num">0.333</td>
+      <td class="num tnprelim">0.201</td>
+      <td class="num strong">0.182</td>
+      <td class="pcell"><span class="pill none">1 solo día</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.55×</b><i>45%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Cuchara spaghettis enteriza linea Hogar - Estampa Mango Balancín<span class="maq">260121ESTMB · Balancín N° 45</span><details><summary>desglose · código 260121ESTMB</summary><div class="tr">Días → 02/10/2026: 5 pza</div><div class="ctx">Qué más se hizo ese día:<br><b>02/10/2026</b> en Balancín N° 45: Manija Bandeja Cuero - Perforado Balancín (300). Espumadera Nro 14 Enteriza - Estampa Espumadera Balancín (100). Aro Porta Balde Champang c/Pie y Aro - Marcado Escalón Balancín (62). Cuchara spaghettis enteriza linea Hogar - Estampa Balancín (5)</div></details></td>
+      <td class="num pzs">5</td>
+      <td class="num">0.333</td>
+      <td class="num ">0.375</td>
+      <td class="num strong">0.176</td>
+      <td class="pcell"><span class="pill fast"><b>0.47×</b><i>53%</i></span><span class="nd">· 5 d</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.53×</b><i>47%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Mango Sartén Corto - Marcar Cuna Balancín<span class="maq">3000311MCB · Balancín N° 45</span><details><summary>desglose · código 3000311MCB</summary><div class="tr">Días → 29/09/2026: 173 pza</div></details></td>
+      <td class="num pzs">173</td>
+      <td class="num">0.167</td>
+      <td class="num tnprelim">0.083</td>
+      <td class="num strong">0.083</td>
+      <td class="pcell"><span class="pill none">1 solo día</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.50×</b><i>50%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Tapa Salero Grueso - Marca Balancín<span class="maq">61604TSGMB · Balancín N° 45</span><details><summary>desglose · código 61604TSGMB</summary><div class="tr">Días → 30/09/2026: 4 pza</div><div class="ctx">Qué más se hizo ese día:<br><b>30/09/2026</b> en Balancín N° 45: Pinza Curva de Precisión - Amoldar Balancín (181). Prensa Papas - Plegado Lenguenta Balancín (116). Prensa Papas - Aplastado 1 Paso Lenguenta Balancín (113). Prensa Papas - Aplastado 2 Paso Lenguenta Balancín (112). Jarra Agua 2 LTS. ENTERIZA - Estampado Fondo Balancín (93). Tapa Salero Fino - Marca Balancín (21)</div></details></td>
+      <td class="num pzs">4</td>
+      <td class="num">0.588</td>
+      <td class="num ">0.541</td>
+      <td class="num strong">0.270</td>
+      <td class="pcell"><span class="pill fast"><b>0.50×</b><i>50%</i></span><span class="nd">· 10 d</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.46×</b><i>54%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Tapa Alcuza Aceite 1/2 Lt. - Recorte Balancín<span class="maq">61008TRB · Balancín N° 45</span><div class="causa"><span class="ck">Causa (Matías 28/09/2026)</span><b>TC mal cargado</b> — Para este artículo no se encontró un tiempo designado en planilla de costos. lo cual se opto por un TC DE 0.5. donde la performance esta al 145%. El tiempo de wiidem dio 0.161 y al cronometrar dio un tiempo de 0.169 (No hubo cambio en Wiidem) · Dirección / Costos</div><details><summary>desglose · código 61008TRB</summary><div class="tr">Días → 28/09/2026: 85 pza</div></details></td>
+      <td class="num pzs">85</td>
+      <td class="num">0.500</td>
+      <td class="num tnprelim">0.222</td>
+      <td class="num strong">0.161</td>
+      <td class="pcell"><span class="pill none">1 solo día</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.32×</b><i>68%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Cuchara spaghettis enteriza linea Hogar - Estampa Balancín<span class="maq">260121ESTB · Balancín N° 45</span><details><summary>desglose · código 260121ESTB</summary><div class="tr">Días → 02/10/2026: 5 pza</div><div class="ctx">Qué más se hizo ese día:<br><b>02/10/2026</b> en Balancín N° 45: Manija Bandeja Cuero - Perforado Balancín (300). Espumadera Nro 14 Enteriza - Estampa Espumadera Balancín (100). Aro Porta Balde Champang c/Pie y Aro - Marcado Escalón Balancín (62). Cuchara spaghettis enteriza linea Hogar - Estampa Mango Balancín (5)</div></details></td>
+      <td class="num pzs">5</td>
+      <td class="num">0.750</td>
+      <td class="num ">0.375</td>
+      <td class="num strong">0.220</td>
+      <td class="pcell"><span class="pill fast"><b>0.59×</b><i>41%</i></span><span class="nd">· 5 d</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.29×</b><i>71%</i></span></td></tr></tbody></table></div><div class="maqblock"><div class="maqhead"><h3>Prensa Nro 2</h3><span>5 productos · 968 piezas <span class="mred">4 en rojo</span></span></div>
+      <table><thead><tr><th class="l">Producto</th><th>Piezas</th><th>TC costos</th><th>TC normal</th><th>TC semana</th><th>vs normal</th><th>vs costos</th></tr></thead>
+      <tbody><tr class="red">
+      <td class="prod"><span class="dot red"></span>Cucharón Porcionador 8 OZ 240 ml. - Estampa<span class="maq">CP8OZEST · Prensa Nro 2</span><div class="causa"><span class="ck">Causa (Matías 29/09/2026)</span><b>TC mal cargado</b> — El artìculo presenta un tiempo de ciclo de 0.8333 minutos. Sin embargo. el tiempo de WIDDEM arrojó un valor de 1.116 minutos. mientras que. al realizar el cronometraje. se obtuvo un tiempo de 0.79 minutos. Durante el proceso. el operario pasa una esponja con aceite sobre el disco. lo coloca en la matriz y. posteriormente. posiciona un nylon antes de realizar el estampado. El funcionamiento de la prensa es correcto y el proceso de estampado se realiza en aproximadamente 10 segundos. Se observa que se pierde tiempo en las tareas de lubricación del disco y colocación del nylon. que requieren una intervención constante del operario. Se considera que el 15 % de pérdida de rendimiento (performance) podría estar relacionado con estas tareas manuales. además de los tiempos asociados a los eventos de cambio de matriz y corte de nylon.En cuanto a los eventos registrados. el cambio de matriz tuvo una duración de 154 minutos. mientras que. al inicio de la jornada. el evento rutinario de cambio de prensa demandó 113 minutos. · Dirección / Costos</div><details><summary>desglose · código CP8OZEST</summary><div class="tr">Días → 29/09/2026: 56 pza</div></details></td>
+      <td class="num pzs">56</td>
+      <td class="num">0.833</td>
+      <td class="num tnprelim">1.108</td>
+      <td class="num strong">1.218</td>
+      <td class="pcell"><span class="pill none">1 solo día</span></td>
+      <td class="pcell"><span class="pill slow"><b>1.46×</b><i>46%</i></span></td></tr><tr class="red">
+      <td class="prod"><span class="dot red"></span>Legumbrera Oval 26cm  - Estampa<span class="maq">LO26EST · Prensa Nro 2</span><details><summary>desglose · código LO26EST</summary><div class="tr">Días → 01/10/2026: 304 pza · 02/10/2026: 35 pza</div></details></td>
+      <td class="num pzs">339</td>
+      <td class="num">0.750</td>
+      <td class="num ">—</td>
+      <td class="num strong">1.035</td>
+      <td class="pcell"><span class="pill none">primera vez</span></td>
+      <td class="pcell"><span class="pill slow"><b>1.38×</b><i>38%</i></span></td></tr><tr class="red">
+      <td class="prod"><span class="dot red"></span>Cucharon Porcionador 6 Oz - Estampado<span class="maq">CP6OZEST · Prensa Nro 2</span><details><summary>desglose · código CP6OZEST</summary><div class="tr">Días → 30/09/2026: 153 pza</div></details></td>
+      <td class="num pzs">153</td>
+      <td class="num">0.833</td>
+      <td class="num ">—</td>
+      <td class="num strong">1.060</td>
+      <td class="pcell"><span class="pill none">primera vez</span></td>
+      <td class="pcell"><span class="pill slow"><b>1.27×</b><i>27%</i></span></td></tr><tr class="red">
+      <td class="prod"><span class="dot red"></span>Cucharón N° 10 Enterizo - Estampado<span class="maq">CU10ENEST · Prensa Nro 2</span><details><summary>desglose · código CU10ENEST</summary><div class="tr">Días → 28/09/2026: 275 pza</div></details></td>
+      <td class="num pzs">275</td>
+      <td class="num">0.822</td>
+      <td class="num ">1.280</td>
+      <td class="num strong">1.040</td>
+      <td class="pcell"><span class="pill fast"><b>0.81×</b><i>19%</i></span><span class="nd">· 11 d</span></td>
+      <td class="pcell"><span class="pill slow"><b>1.27×</b><i>27%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Refuerzo Pie Balde Champagne - Estampado<span class="maq">RPBCEST · Prensa Nro 2</span><details><summary>desglose · código RPBCEST</summary><div class="tr">Días → 02/10/2026: 145 pza</div></details></td>
+      <td class="num pzs">145</td>
+      <td class="num">0.873</td>
+      <td class="num ">—</td>
+      <td class="num strong">0.753</td>
+      <td class="pcell"><span class="pill none">primera vez</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.86×</b><i>14%</i></span></td></tr></tbody></table></div><div class="maqblock"><div class="maqhead"><h3>Plegadora 100</h3><span>9 productos · 666 piezas <span class="mred">3 en rojo</span></span></div>
+      <table><thead><tr><th class="l">Producto</th><th>Piezas</th><th>TC costos</th><th>TC normal</th><th>TC semana</th><th>vs normal</th><th>vs costos</th></tr></thead>
+      <tbody><tr class="red">
+      <td class="prod"><span class="dot red"></span>Gancho colador triangular - Plegado<span class="maq">3000436PL · Plegadora 100</span><details><summary>desglose · código 3000436PL</summary><div class="tr">Días → 28/09/2026: 63 pza · 30/09/2026: 277 pza</div></details></td>
+      <td class="num pzs">340</td>
+      <td class="num">0.333</td>
+      <td class="num tnprelim">1.181</td>
+      <td class="num strong">1.119</td>
+      <td class="pcell"><span class="pill none">1 solo día</span></td>
+      <td class="pcell"><span class="pill slow"><b>3.36×</b><i>236%</i></span></td></tr><tr class="red">
+      <td class="prod"><span class="dot red"></span>Porta tabla Chapa - Plegado<span class="maq">61591PL · Plegadora 100</span><details><summary>desglose · código 61591PL</summary><div class="tr">Días → 28/09/2026: 33 pza</div></details></td>
+      <td class="num pzs">33</td>
+      <td class="num">1.000</td>
+      <td class="num tnprelim">1.490</td>
+      <td class="num strong">2.465</td>
+      <td class="pcell"><span class="pill amber prelim"><b>1.66×</b><i>66%</i></span><span class="nd">· 2 d</span> <span class="tag">prelim</span></td>
+      <td class="pcell"><span class="pill slow"><b>2.47×</b><i>147%</i></span></td></tr><tr class="red">
+      <td class="prod"><span class="dot red"></span>Comandera 90cmts - Plegado<span class="maq">93053CPL · Plegadora 100</span><details><summary>desglose · código 93053CPL</summary><div class="tr">Días → 29/09/2026: 10 pza</div><div class="ctx">Qué más se hizo ese día:<br><b>29/09/2026</b> en Plegadora 100: Comandera 90 cmts - Plegado 2 (15)</div></details></td>
+      <td class="num pzs">10</td>
+      <td class="num">1.622</td>
+      <td class="num tnprelim">2.522</td>
+      <td class="num strong">2.222</td>
+      <td class="pcell"><span class="pill neutral prelim"><b>0.88×</b><i>12%</i></span><span class="nd">· 3 d</span> <span class="tag">prelim</span></td>
+      <td class="pcell"><span class="pill slow"><b>1.37×</b><i>37%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Refuerzo Porta tabla Chapa - Plegado<span class="maq">61591RPL · Plegadora 100</span><details><summary>desglose · código 61591RPL</summary><div class="tr">Días → 28/09/2026: 56 pza</div></details></td>
+      <td class="num pzs">56</td>
+      <td class="num">0.500</td>
+      <td class="num tnprelim">0.451</td>
+      <td class="num strong">0.435</td>
+      <td class="pcell"><span class="pill none">1 solo día</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.87×</b><i>13%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Fleje Prensa Papa 2do Paso - Plegado<span class="maq">FPP2PPL · Plegadora 100</span><details><summary>desglose · código FPP2PPL</summary><div class="tr">Días → 28/09/2026: 92 pza</div></details></td>
+      <td class="num pzs">92</td>
+      <td class="num">0.500</td>
+      <td class="num tnprelim">0.165</td>
+      <td class="num strong">0.373</td>
+      <td class="pcell"><span class="pill none">1 solo día</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.75×</b><i>25%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Fleje Prensa Papa 1er Paso - Plegado<span class="maq">FPP1PPL · Plegadora 100</span><details><summary>desglose · código FPP1PPL</summary><div class="tr">Días → 28/09/2026: 92 pza</div></details></td>
+      <td class="num pzs">92</td>
+      <td class="num">0.500</td>
+      <td class="num tnprelim">0.552</td>
+      <td class="num strong">0.340</td>
+      <td class="pcell"><span class="pill none">1 solo día</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.68×</b><i>32%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Comandera 60cmts - Plegado<span class="maq">93052CPL · Plegadora 100</span><details><summary>desglose · código 93052CPL</summary><div class="tr">Días → 28/09/2026: 14 pza</div><div class="ctx">Qué más se hizo ese día:<br><b>28/09/2026</b> en Plegadora 100: Fleje Prensa Papa 1er Paso - Plegado (92). Fleje Prensa Papa 2do Paso - Plegado (92). Gancho colador triangular - Plegado (63). Refuerzo Porta tabla Chapa - Plegado (56). Porta tabla Chapa - Plegado (33). Comandera 60 cmts - Plegado 2 (14)</div></details></td>
+      <td class="num pzs">14</td>
+      <td class="num">1.622</td>
+      <td class="num tnprelim">2.084</td>
+      <td class="num strong">0.967</td>
+      <td class="pcell"><span class="pill fast prelim"><b>0.46×</b><i>54%</i></span><span class="nd">· 2 d</span> <span class="tag">prelim</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.60×</b><i>40%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Comandera 90 cmts - Plegado 2<span class="maq">93053CPL2 · Plegadora 100</span><details><summary>desglose · código 93053CPL2</summary><div class="tr">Días → 29/09/2026: 15 pza</div><div class="ctx">Qué más se hizo ese día:<br><b>29/09/2026</b> en Plegadora 100: Comandera 90cmts - Plegado (10)</div></details></td>
+      <td class="num pzs">15</td>
+      <td class="num">0.500</td>
+      <td class="num tnprelim">2.010</td>
+      <td class="num strong">0.217</td>
+      <td class="pcell"><span class="pill fast prelim"><b>0.11×</b><i>89%</i></span><span class="nd">· 2 d</span> <span class="tag">prelim</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.43×</b><i>57%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Comandera 60 cmts - Plegado 2<span class="maq">93052CPL2 · Plegadora 100</span><details><summary>desglose · código 93052CPL2</summary><div class="tr">Días → 28/09/2026: 14 pza</div><div class="ctx">Qué más se hizo ese día:<br><b>28/09/2026</b> en Plegadora 100: Fleje Prensa Papa 1er Paso - Plegado (92). Fleje Prensa Papa 2do Paso - Plegado (92). Gancho colador triangular - Plegado (63). Refuerzo Porta tabla Chapa - Plegado (56). Porta tabla Chapa - Plegado (33). Comandera 60cmts - Plegado (14)</div></details></td>
+      <td class="num pzs">14</td>
+      <td class="num">0.500</td>
+      <td class="num tnprelim">1.246</td>
+      <td class="num strong">0.206</td>
+      <td class="pcell"><span class="pill fast prelim"><b>0.17×</b><i>83%</i></span><span class="nd">· 2 d</span> <span class="tag">prelim</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.41×</b><i>59%</i></span></td></tr></tbody></table></div><div class="maqblock"><div class="maqhead"><h3>Pulidora Nro 55</h3><span>8 productos · 329 piezas </span></div>
+      <table><thead><tr><th class="l">Producto</th><th>Piezas</th><th>TC costos</th><th>TC normal</th><th>TC semana</th><th>vs normal</th><th>vs costos</th></tr></thead>
+      <tbody><tr class="green">
+      <td class="prod"><span class="dot green"></span>Asas Cacerola 24-30 Gastronómica - Cepillo<span class="maq">ASCA2430GC · Pulidora Nro 55</span><details><summary>desglose · código ASCA2430GC</summary><div class="tr">Días → 28/09/2026: 153 pza</div></details></td>
+      <td class="num pzs">153</td>
+      <td class="num">0.630</td>
+      <td class="num ">0.689</td>
+      <td class="num strong">0.666</td>
+      <td class="pcell"><span class="pill neutral"><b>0.97×</b><i>3%</i></span><span class="nd">· 15 d</span></td>
+      <td class="pcell"><span class="pill neutral"><b>1.06×</b><i>6%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Asas Cacerola 24-30 Gastronómica - Polea 180<span class="maq">ASCA2430GP180 · Pulidora Nro 55</span><details><summary>desglose · código ASCA2430GP180</summary><div class="tr">Días → 28/09/2026: 104 pza</div></details></td>
+      <td class="num pzs">104</td>
+      <td class="num">0.391</td>
+      <td class="num ">0.531</td>
+      <td class="num strong">0.346</td>
+      <td class="pcell"><span class="pill fast"><b>0.65×</b><i>35%</i></span><span class="nd">· 19 d</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.89×</b><i>11%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Tapa Pava 18/8 - Paño Exterior<span class="maq">TAPA18/8PE · Pulidora Nro 55</span><details><summary>desglose · código TAPA18/8PE</summary><div class="tr">Días → 01/10/2026: 4 pza</div><div class="ctx">Qué más se hizo ese día:<br><b>01/10/2026</b> en Pulidora Nro 55: Asadera 44 Lisa 430 - Sacado Filo (20). Tapa Pava 18/8 - Sacado Filo (4). Tapa Pava 18/8 - Cepillo Interior (4). Tapa Pava 18/8 - Cepillo Exterior (4)</div></details></td>
+      <td class="num pzs">4</td>
+      <td class="num">1.498</td>
+      <td class="num ">1.420</td>
+      <td class="num strong">0.510</td>
+      <td class="pcell"><span class="pill fast"><b>0.36×</b><i>64%</i></span><span class="nd">· 7 d</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.34×</b><i>66%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Rallador Verdura - Sacado Punto<span class="maq">RAVESP · Pulidora Nro 55</span><details><summary>desglose · código RAVESP</summary><div class="tr">Días → 30/09/2026: 36 pza</div></details></td>
+      <td class="num pzs">36</td>
+      <td class="num">1.456</td>
+      <td class="num ">1.481</td>
+      <td class="num strong">0.489</td>
+      <td class="pcell"><span class="pill fast"><b>0.33×</b><i>67%</i></span><span class="nd">· 25 d</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.34×</b><i>66%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Tapa Pava 18/8 - Cepillo Interior<span class="maq">TAPA18/8CI · Pulidora Nro 55</span><details><summary>desglose · código TAPA18/8CI</summary><div class="tr">Días → 01/10/2026: 4 pza</div><div class="ctx">Qué más se hizo ese día:<br><b>01/10/2026</b> en Pulidora Nro 55: Asadera 44 Lisa 430 - Sacado Filo (20). Tapa Pava 18/8 - Sacado Filo (4). Tapa Pava 18/8 - Cepillo Exterior (4). Tapa Pava 18/8 - Paño Exterior (4)</div></details></td>
+      <td class="num pzs">4</td>
+      <td class="num">1.352</td>
+      <td class="num ">1.223</td>
+      <td class="num strong">0.417</td>
+      <td class="pcell"><span class="pill fast"><b>0.34×</b><i>66%</i></span><span class="nd">· 10 d</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.31×</b><i>69%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Asadera 44 Lisa 430 - Sacado Filo<span class="maq">AS44L430SF · Pulidora Nro 55</span><details><summary>desglose · código AS44L430SF</summary><div class="tr">Días → 01/10/2026: 20 pza</div></details></td>
+      <td class="num pzs">20</td>
+      <td class="num">1.700</td>
+      <td class="num tnprelim">1.187</td>
+      <td class="num strong">0.504</td>
+      <td class="pcell"><span class="pill fast prelim"><b>0.42×</b><i>58%</i></span><span class="nd">· 2 d</span> <span class="tag">prelim</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.30×</b><i>70%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Tapa Pava 18/8 - Sacado Filo<span class="maq">TAPA18/8SF · Pulidora Nro 55</span><details><summary>desglose · código TAPA18/8SF</summary><div class="tr">Días → 01/10/2026: 4 pza</div><div class="ctx">Qué más se hizo ese día:<br><b>01/10/2026</b> en Pulidora Nro 55: Asadera 44 Lisa 430 - Sacado Filo (20). Tapa Pava 18/8 - Cepillo Interior (4). Tapa Pava 18/8 - Cepillo Exterior (4). Tapa Pava 18/8 - Paño Exterior (4)</div></details></td>
+      <td class="num pzs">4</td>
+      <td class="num">1.200</td>
+      <td class="num ">1.278</td>
+      <td class="num strong">0.302</td>
+      <td class="pcell"><span class="pill fast"><b>0.24×</b><i>76%</i></span><span class="nd">· 11 d</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.25×</b><i>75%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Tapa Pava 18/8 - Cepillo Exterior<span class="maq">TAPA18/8CE · Pulidora Nro 55</span><details><summary>desglose · código TAPA18/8CE</summary><div class="tr">Días → 01/10/2026: 4 pza</div><div class="ctx">Qué más se hizo ese día:<br><b>01/10/2026</b> en Pulidora Nro 55: Asadera 44 Lisa 430 - Sacado Filo (20). Tapa Pava 18/8 - Sacado Filo (4). Tapa Pava 18/8 - Cepillo Interior (4). Tapa Pava 18/8 - Paño Exterior (4)</div></details></td>
+      <td class="num pzs">4</td>
+      <td class="num">2.699</td>
+      <td class="num ">2.020</td>
+      <td class="num strong">0.500</td>
+      <td class="pcell"><span class="pill fast"><b>0.25×</b><i>75%</i></span><span class="nd">· 9 d</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.19×</b><i>81%</i></span></td></tr></tbody></table></div><div class="maqblock"><div class="maqhead"><h3>Esmerilado Izq. Nro 64</h3><span>13 productos · 214 piezas </span></div>
+      <table><thead><tr><th class="l">Producto</th><th>Piezas</th><th>TC costos</th><th>TC normal</th><th>TC semana</th><th>vs normal</th><th>vs costos</th></tr></thead>
+      <tbody><tr class="yellow">
+      <td class="prod"><span class="dot yellow"></span>Portabotella Cerveza - Esmerilado<span class="maq">PBCERESM · Esmerilado Izq. Nro 64</span><details><summary>desglose · código PBCERESM</summary><div class="tr">Días → 02/10/2026: 5 pza</div><div class="ctx">Qué más se hizo ese día:<br><b>02/10/2026</b> en Esmerilado Izq. Nro 64: Fondo Olla 50 - Esmerilado (5)</div></details></td>
+      <td class="num pzs">5</td>
+      <td class="num">1.000</td>
+      <td class="num ">—</td>
+      <td class="num strong">1.136</td>
+      <td class="pcell"><span class="pill none">primera vez</span></td>
+      <td class="pcell"><span class="pill amber"><b>1.14×</b><i>14%</i></span></td></tr><tr class="yellow">
+      <td class="prod"><span class="dot yellow"></span>Tubo Salsero 6 (12.5) - Esmerilado<span class="maq">TS12ESM · Esmerilado Izq. Nro 64</span><details><summary>desglose · código TS12ESM</summary><div class="tr">Días → 30/09/2026: 45 pza</div></details></td>
+      <td class="num pzs">45</td>
+      <td class="num">1.200</td>
+      <td class="num ">1.215</td>
+      <td class="num strong">1.338</td>
+      <td class="pcell"><span class="pill neutral"><b>1.10×</b><i>10%</i></span><span class="nd">· 22 d</span></td>
+      <td class="pcell"><span class="pill amber"><b>1.12×</b><i>12%</i></span></td></tr><tr class="yellow">
+      <td class="prod"><span class="dot yellow"></span>Tubo Salsero 3 (20) - 18/8 - Esmerilado<span class="maq">TS20-18ESM · Esmerilado Izq. Nro 64</span><details><summary>desglose · código TS20-18ESM</summary><div class="tr">Días → 29/09/2026: 25 pza · 30/09/2026: 18 pza</div></details></td>
+      <td class="num pzs">43</td>
+      <td class="num">2.308</td>
+      <td class="num ">1.086</td>
+      <td class="num strong">2.351</td>
+      <td class="pcell"><span class="pill amber"><b>2.16×</b><i>116%</i></span><span class="nd">· 8 d</span></td>
+      <td class="pcell"><span class="pill neutral"><b>1.02×</b><i>2%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Tubo Salsero 3 (20) - Esmerilado<span class="maq">TS20ESM · Esmerilado Izq. Nro 64</span><details><summary>desglose · código TS20ESM</summary><div class="tr">Días → 29/09/2026: 20 pza · 30/09/2026: 12 pza</div></details></td>
+      <td class="num pzs">32</td>
+      <td class="num">2.308</td>
+      <td class="num ">2.322</td>
+      <td class="num strong">2.399</td>
+      <td class="pcell"><span class="pill neutral"><b>1.03×</b><i>3%</i></span><span class="nd">· 13 d</span></td>
+      <td class="pcell"><span class="pill neutral"><b>1.04×</b><i>4%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Fondo Olla 45 - Esmerilado<span class="maq">FO45ESM · Esmerilado Izq. Nro 64</span><details><summary>desglose · código FO45ESM</summary><div class="tr">Días → 29/09/2026: 8 pza</div><div class="ctx">Qué más se hizo ese día:<br><b>29/09/2026</b> en Esmerilado Izq. Nro 64: Tubo Salsero 3 (20) - 18/8 - Esmerilado (25). Tubo Salsero 3 (20) - Esmerilado (20). Wok 35 - Esmerilado (12). Balde Champang Ent. P/Lujo - Esmerilado Interior (10). Tapa Gastronómica 50 - Esmerilado (8)</div></details></td>
+      <td class="num pzs">8</td>
+      <td class="num">3.000</td>
+      <td class="num ">—</td>
+      <td class="num strong">3.090</td>
+      <td class="pcell"><span class="pill none">primera vez</span></td>
+      <td class="pcell"><span class="pill neutral"><b>1.03×</b><i>3%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Tubo Salsero 5 (24) - Esmerilado<span class="maq">TS24ESM · Esmerilado Izq. Nro 64</span><details><summary>desglose · código TS24ESM</summary><div class="tr">Días → 30/09/2026: 12 pza</div><div class="ctx">Qué más se hizo ese día:<br><b>30/09/2026</b> en Esmerilado Izq. Nro 64: Tubo Salsero 6 (12.5) - Esmerilado (45). Tubo Salsero 3 (20) - 18/8 - Esmerilado (18). Tubo Salsero 3 (20) - Esmerilado (12). Tubo Salsero 4 (22) - Esmerilado (10). Chafing Redondo - Esmerilado Int. (6)</div></details></td>
+      <td class="num pzs">12</td>
+      <td class="num">2.500</td>
+      <td class="num ">2.679</td>
+      <td class="num strong">2.524</td>
+      <td class="pcell"><span class="pill neutral"><b>0.94×</b><i>6%</i></span><span class="nd">· 9 d</span></td>
+      <td class="pcell"><span class="pill neutral"><b>1.01×</b><i>1%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Chafing Redondo - Esmerilado Int.<span class="maq">CHFROESM · Esmerilado Izq. Nro 64</span><details><summary>desglose · código CHFROESM</summary><div class="tr">Días → 30/09/2026: 6 pza</div><div class="ctx">Qué más se hizo ese día:<br><b>30/09/2026</b> en Esmerilado Izq. Nro 64: Tubo Salsero 6 (12.5) - Esmerilado (45). Tubo Salsero 3 (20) - 18/8 - Esmerilado (18). Tubo Salsero 5 (24) - Esmerilado (12). Tubo Salsero 3 (20) - Esmerilado (12). Tubo Salsero 4 (22) - Esmerilado (10)</div></details></td>
+      <td class="num pzs">6</td>
+      <td class="num">3.000</td>
+      <td class="num ">—</td>
+      <td class="num strong">2.945</td>
+      <td class="pcell"><span class="pill none">primera vez</span></td>
+      <td class="pcell"><span class="pill neutral"><b>0.98×</b><i>2%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Wok 35 - Esmerilado<span class="maq">WK35ESM · Esmerilado Izq. Nro 64</span><details><summary>desglose · código WK35ESM</summary><div class="tr">Días → 29/09/2026: 12 pza</div><div class="ctx">Qué más se hizo ese día:<br><b>29/09/2026</b> en Esmerilado Izq. Nro 64: Tubo Salsero 3 (20) - 18/8 - Esmerilado (25). Tubo Salsero 3 (20) - Esmerilado (20). Balde Champang Ent. P/Lujo - Esmerilado Interior (10). Tapa Gastronómica 50 - Esmerilado (8). Fondo Olla 45 - Esmerilado (8)</div></details></td>
+      <td class="num pzs">12</td>
+      <td class="num">4.615</td>
+      <td class="num ">—</td>
+      <td class="num strong">4.146</td>
+      <td class="pcell"><span class="pill none">primera vez</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.90×</b><i>10%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Balde Champang Ent. P/Lujo - Esmerilado Interior<span class="maq">BCHENESMI · Esmerilado Izq. Nro 64</span><details><summary>desglose · código BCHENESMI</summary><div class="tr">Días → 29/09/2026: 10 pza</div><div class="ctx">Qué más se hizo ese día:<br><b>29/09/2026</b> en Esmerilado Izq. Nro 64: Tubo Salsero 3 (20) - 18/8 - Esmerilado (25). Tubo Salsero 3 (20) - Esmerilado (20). Wok 35 - Esmerilado (12). Tapa Gastronómica 50 - Esmerilado (8). Fondo Olla 45 - Esmerilado (8)</div></details></td>
+      <td class="num pzs">10</td>
+      <td class="num">2.340</td>
+      <td class="num tnprelim">2.336</td>
+      <td class="num strong">1.872</td>
+      <td class="pcell"><span class="pill none">1 solo día</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.80×</b><i>20%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Fondo Olla 50 - Esmerilado<span class="maq">FO50ESM · Esmerilado Izq. Nro 64</span><details><summary>desglose · código FO50ESM</summary><div class="tr">Días → 02/10/2026: 5 pza</div><div class="ctx">Qué más se hizo ese día:<br><b>02/10/2026</b> en Esmerilado Izq. Nro 64: Portabotella Cerveza - Esmerilado (5)</div></details></td>
+      <td class="num pzs">5</td>
+      <td class="num">4.615</td>
+      <td class="num tnprelim">4.635</td>
+      <td class="num strong">3.676</td>
+      <td class="pcell"><span class="pill fast prelim"><b>0.79×</b><i>21%</i></span><span class="nd">· 4 d</span> <span class="tag">prelim</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.80×</b><i>20%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Tubo Salsero 4 (22) - Esmerilado<span class="maq">TS22ESM · Esmerilado Izq. Nro 64</span><details><summary>desglose · código TS22ESM</summary><div class="tr">Días → 30/09/2026: 10 pza · 01/10/2026: 15 pza</div></details></td>
+      <td class="num pzs">25</td>
+      <td class="num">2.609</td>
+      <td class="num ">2.477</td>
+      <td class="num strong">2.074</td>
+      <td class="pcell"><span class="pill fast"><b>0.84×</b><i>16%</i></span><span class="nd">· 16 d</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.80×</b><i>20%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Tapa Gastronómica 50 - Esmerilado<span class="maq">T50GESM · Esmerilado Izq. Nro 64</span><details><summary>desglose · código T50GESM</summary><div class="tr">Días → 29/09/2026: 8 pza</div><div class="ctx">Qué más se hizo ese día:<br><b>29/09/2026</b> en Esmerilado Izq. Nro 64: Tubo Salsero 3 (20) - 18/8 - Esmerilado (25). Tubo Salsero 3 (20) - Esmerilado (20). Wok 35 - Esmerilado (12). Balde Champang Ent. P/Lujo - Esmerilado Interior (10). Fondo Olla 45 - Esmerilado (8)</div></details></td>
+      <td class="num pzs">8</td>
+      <td class="num">6.000</td>
+      <td class="num tnprelim">5.557</td>
+      <td class="num strong">3.130</td>
+      <td class="pcell"><span class="pill none">1 solo día</span></td>
+      <td class="pcell"><span class="pill fast"><b>0.52×</b><i>48%</i></span></td></tr><tr class="dudoso">
+      <td class="prod"><span class="dot dudoso"></span>Tapa Gastronómica 45 - Esmerilado<span class="maq">T45GESM · Esmerilado Izq. Nro 64</span>
+        <div class="dudnota">Evento de tablet sin cerrar → el tiempo real de estas piezas no se puede reconstruir.
+        No se calcula desvío. 01/10/2026: 3 pza en 15 hs</div></td>
+      <td class="num pzs">3</td>
+      <td class="num">5.455</td>
+      <td class="num">4.395</td>
+      <td class="num strong">—</td>
+      <td class="pcell"><span class="pill none">dato dudoso</span></td>
+      <td class="pcell"><span class="pill none">no computado</span></td></tr></tbody></table></div><div class="maqblock"><div class="maqhead"><h3>Balancín N° 44</h3><span>2 productos · 101 piezas <span class="mred">2 en rojo</span></span></div>
+      <table><thead><tr><th class="l">Producto</th><th>Piezas</th><th>TC costos</th><th>TC normal</th><th>TC semana</th><th>vs normal</th><th>vs costos</th></tr></thead>
+      <tbody><tr class="red">
+      <td class="prod"><span class="dot red"></span>Cuerpo Colador Chino 24 - Perforado Balancín<span class="maq">61202CPB · Balancín N° 44</span><div class="causa"><span class="ck">Causa (Matías 14/07/2025)</span><b>Herramental</b> — La matriz no está al 100%: el perforado deja rebabas y hay que sacarlas a mano con alicate pieza por pieza. El balancín golpea dentro del TC; el tiempo extra es desbarbado manual. · <b>Resuelta</b> · Mantenimiento</div><details><summary>desglose · código 61202CPB</summary><div class="tr">Días → 01/10/2026: 18 pza · 02/10/2026: 27 pza</div></details></td>
+      <td class="num pzs">45</td>
+      <td class="num">0.283</td>
+      <td class="num ">3.860</td>
+      <td class="num strong">3.114</td>
+      <td class="pcell"><span class="pill fast"><b>0.81×</b><i>19%</i></span><span class="nd">· 8 d</span></td>
+      <td class="pcell"><span class="pill slow"><b>11.00×</b><i>1000%</i></span></td></tr><tr class="red">
+      <td class="prod"><span class="dot red"></span>Cuerpo Colador Chino 30 - Perforado Balancín<span class="maq">61208CPB · Balancín N° 44</span><details><summary>desglose · código 61208CPB</summary><div class="tr">Días → 01/10/2026: 56 pza</div></details></td>
+      <td class="num pzs">56</td>
+      <td class="num">0.424</td>
+      <td class="num tnprelim">3.511</td>
+      <td class="num strong">3.476</td>
+      <td class="pcell"><span class="pill neutral prelim"><b>0.99×</b><i>1%</i></span><span class="nd">· 2 d</span> <span class="tag">prelim</span></td>
+      <td class="pcell"><span class="pill slow"><b>8.19×</b><i>719%</i></span></td></tr></tbody></table></div><div class="maqblock"><div class="maqhead"><h3>Esmeriladora N° 63</h3><span>2 productos · 85 piezas </span></div>
+      <table><thead><tr><th class="l">Producto</th><th>Piezas</th><th>TC costos</th><th>TC normal</th><th>TC semana</th><th>vs normal</th><th>vs costos</th></tr></thead>
+      <tbody><tr class="yellow">
+      <td class="prod"><span class="dot yellow"></span>Tacho Amasadora 22 Lts Cono - Esmerilado<span class="maq">TA22CESM · Esmeriladora N° 63</span><details><summary>desglose · código TA22CESM</summary><div class="tr">Días → 01/10/2026: 80 pza</div></details></td>
+      <td class="num pzs">80</td>
+      <td class="num">1.130</td>
+      <td class="num ">1.393</td>
+      <td class="num strong">1.339</td>
+      <td class="pcell"><span class="pill neutral"><b>0.96×</b><i>4%</i></span><span class="nd">· 7 d</span></td>
+      <td class="pcell"><span class="pill amber"><b>1.18×</b><i>18%</i></span></td></tr><tr class="green">
+      <td class="prod"><span class="dot green"></span>Coctelera Boston - Esmerilado int. Pote y tapa<span class="maq">61187-ESM · Esmeriladora N° 63</span><details><summary>desglose · código 61187-ESM</summary><div class="tr">Días → 30/09/2026: 5 pza</div></details></td>
+      <td class="num pzs">5</td>
+      <td class="num">1.833</td>
+      <td class="num tnprelim">2.062</td>
+      <td class="num strong">2.002</td>
+      <td class="pcell"><span class="pill neutral prelim"><b>0.97×</b><i>3%</i></span><span class="nd">· 2 d</span> <span class="tag">prelim</span></td>
+      <td class="pcell"><span class="pill neutral"><b>1.09×</b><i>9%</i></span></td></tr></tbody></table></div>
+
+<div class="sec-head" style="margin-top:34px"><span class="sec-no">02</span><h2>En qué se fue el tiempo, por máquina</h2></div>
+<p class="sec-sub">Cómo se reparte el tiempo registrado de cada puesto. Ordenado de menor a mayor
+    % productivo. <b>Puesto no atendido</b> = el operario está trabajando en otra máquina (no es una pérdida a corregir).
+    <b>Sin clasificar</b> = eventos que la tablet no tipificó; se trabajan en el monitoreo de planta.</p>
+    <div class="leg2"><span><span class="sw2" style="background:#1baf7a"></span>Producción</span><span><span class="sw2" style="background:#e34948"></span>Parada mejorable</span><span><span class="sw2" style="background:#898781"></span>Puesto no atendido</span><span><span class="sw2" style="background:#c3c2b7"></span>Humanas</span><span><span class="sw2" style="background:#eda100"></span>Sin clasificar</span></div><div class="bar refbar"><div class="bhead"><span class="bm">Planta (todas las máquinas con tablet)</span><span class="bmeta"><b style="color:#a32d2d">40% productivo</b> · 148.9 hs registradas</span></div><div class="btrack"><div title="Producción: 59.5 hs" style="width:39.95%;background:#1baf7a;border-right:2px solid #F1F3F5"></div><div title="Parada mejorable: 34.6 hs" style="width:23.25%;background:#e34948;border-right:2px solid #F1F3F5"></div><div title="Puesto no atendido: 36.8 hs" style="width:24.72%;background:#898781;border-right:2px solid #F1F3F5"></div><div title="Humanas: 3.6 hs" style="width:2.42%;background:#c3c2b7;border-right:2px solid #F1F3F5"></div><div title="Sin clasificar: 14.4 hs" style="width:9.66%;background:#eda100;border-right:2px solid #F1F3F5"></div></div></div><div class="bar"><div class="bhead"><span class="bm">Pulidora Nro 55</span><span class="bmeta"><b style="color:#a32d2d">13% productivo</b> · 22.8 hs registradas</span></div><div class="btrack"><div title="Producción: 2.9 hs" style="width:12.63%;background:#1baf7a;border-right:2px solid #F1F3F5"></div><div title="Parada mejorable: 19.4 hs" style="width:84.96%;background:#e34948;border-right:2px solid #F1F3F5"></div><div title="Humanas: 0.6 hs" style="width:2.41%;background:#c3c2b7;border-right:2px solid #F1F3F5"></div></div><details class="pdet"><summary>ver las paradas de este puesto</summary><ul><li><span class="pd" style="background:#e34948"></span>Repaso Mercaderia <b>19.4 hs</b> <span class="pn">4 eventos · 291 min c/u</span></li><li><span class="pd" style="background:#c3c2b7"></span>Almuerzo <b>0.6 hs</b> <span class="pn">1 evento · 33 min c/u</span></li></ul></details></div><div class="bar"><div class="bhead"><span class="bm">Esmerilado Izq. Nro 64</span><span class="bmeta"><b style="color:#8B95A0">datos parciales</b> · 31 de 74 hs excluidas por eventos sin cerrar</span></div><div class="btrack"><div title="Producción: 8.3 hs" style="width:19.55%;background:#1baf7a;border-right:2px solid #F1F3F5"></div><div title="Parada mejorable: 0.6 hs" style="width:1.51%;background:#e34948;border-right:2px solid #F1F3F5"></div><div title="Puesto no atendido: 30.8 hs" style="width:72.66%;background:#898781;border-right:2px solid #F1F3F5"></div><div title="Sin clasificar: 2.7 hs" style="width:6.28%;background:#eda100;border-right:2px solid #F1F3F5"></div></div><div class="parcialnota">Se excluyó el 42% del tiempo registrado de este puesto, así que el % productivo no es representativo esta semana. Ver «Calidad del dato».</div><details class="pdet"><summary>ver las paradas de este puesto</summary><ul><li><span class="pd" style="background:#898781"></span>Cambio Esmeriladora <b>30.8 hs</b> <span class="pn">15 eventos · 123 min c/u</span></li><li><span class="pd" style="background:#eda100"></span>Seleccionado Por Error <b>2.0 hs</b> <span class="pn">2 eventos · 61 min c/u</span></li><li><span class="pd" style="background:#eda100"></span>Llevar Mercaderia <b>0.6 hs</b> <span class="pn">2 eventos · 19 min c/u</span></li><li><span class="pd" style="background:#e34948"></span>Buscar Material <b>0.6 hs</b> <span class="pn">4 eventos · 10 min c/u</span></li></ul></details></div><div class="bar"><div class="bhead"><span class="bm">Esmeriladora N° 63</span><span class="bmeta"><b style="color:#a32d2d">26% productivo</b> · 7.5 hs registradas</span></div><div class="btrack"><div title="Producción: 2.0 hs" style="width:26.20%;background:#1baf7a;border-right:2px solid #F1F3F5"></div><div title="Puesto no atendido: 4.1 hs" style="width:54.95%;background:#898781;border-right:2px solid #F1F3F5"></div><div title="Sin clasificar: 1.4 hs" style="width:18.85%;background:#eda100;border-right:2px solid #F1F3F5"></div></div><details class="pdet"><summary>ver las paradas de este puesto</summary><ul><li><span class="pd" style="background:#898781"></span>Cambio Esmeriladora <b>4.1 hs</b> <span class="pn">7 eventos · 35 min c/u</span></li><li><span class="pd" style="background:#eda100"></span>Asistencia A Puesto <b>1.4 hs</b> <span class="pn">1 evento · 84 min c/u</span></li></ul></details></div><div class="bar"><div class="bhead"><span class="bm">Prensa Nro 2</span><span class="bmeta"><b style="color:#a32d2d">39% productivo</b> · 41.9 hs registradas</span></div><div class="btrack"><div title="Producción: 16.3 hs" style="width:38.91%;background:#1baf7a;border-right:2px solid #F1F3F5"></div><div title="Parada mejorable: 14.6 hs" style="width:34.77%;background:#e34948;border-right:2px solid #F1F3F5"></div><div title="Puesto no atendido: 1.9 hs" style="width:4.51%;background:#898781;border-right:2px solid #F1F3F5"></div><div title="Humanas: 1.9 hs" style="width:4.57%;background:#c3c2b7;border-right:2px solid #F1F3F5"></div><div title="Sin clasificar: 7.2 hs" style="width:17.24%;background:#eda100;border-right:2px solid #F1F3F5"></div></div><details class="pdet"><summary>ver las paradas de este puesto</summary><ul><li><span class="pd" style="background:#e34948"></span>Cambio Matriz <b>11.7 hs</b> <span class="pn">6 eventos · 117 min c/u</span></li><li><span class="pd" style="background:#eda100"></span>Asistencia A Otro Puesto <b>4.4 hs</b> <span class="pn">1 evento · 265 min c/u</span></li><li><span class="pd" style="background:#898781"></span>Cambio Prensa <b>1.9 hs</b> <span class="pn">1 evento · 113 min c/u</span></li><li><span class="pd" style="background:#c3c2b7"></span>Almuerzo <b>1.3 hs</b> <span class="pn">2 eventos · 40 min c/u</span></li><li><span class="pd" style="background:#eda100"></span>Otro <b>1.3 hs</b> <span class="pn">3 eventos · 26 min c/u</span></li><li><span class="pd" style="background:#e34948"></span>Esperar Orden <b>1.1 hs</b> <span class="pn">5 eventos · 13 min c/u</span></li><li><span class="pd" style="background:#eda100"></span>Puesta A Punto <b>1.0 hs</b> <span class="pn">2 eventos · 29 min c/u</span></li><li><span class="pd" style="background:#e34948"></span>Esperar O Buscar Material <b>0.8 hs</b> <span class="pn">3 eventos · 16 min c/u</span></li><li><span class="pd" style="background:#e34948"></span>Sacar Nylon <b>0.6 hs</b> <span class="pn">2 eventos · 18 min c/u</span></li><li><span class="pd" style="background:#c3c2b7"></span>Baño <b>0.6 hs</b> <span class="pn">2 eventos · 17 min c/u</span></li><li><span class="pd" style="background:#eda100"></span>Limpieza De Sector <b>0.6 hs</b> <span class="pn">1 evento · 34 min c/u</span></li><li><span class="pd" style="background:#e34948"></span>Cortar Nylon <b>0.4 hs</b> <span class="pn">2 eventos · 13 min c/u</span></li></ul></details></div><div class="bar"><div class="bhead"><span class="bm">Plegadora 100</span><span class="bmeta"><b style="color:#0f6e56">85% productivo</b> · 11.7 hs registradas</span></div><div class="btrack"><div title="Producción: 9.9 hs" style="width:84.80%;background:#1baf7a;border-right:2px solid #F1F3F5"></div><div title="Sin clasificar: 1.8 hs" style="width:15.20%;background:#eda100;border-right:2px solid #F1F3F5"></div></div><details class="pdet"><summary>ver las paradas de este puesto</summary><ul><li><span class="pd" style="background:#eda100"></span>Puesta A Punto <b>1.1 hs</b> <span class="pn">5 eventos · 13 min c/u</span></li><li><span class="pd" style="background:#eda100"></span>Otra Tarea Designada <b>0.7 hs</b> <span class="pn">1 evento · 43 min c/u</span></li></ul></details></div><div class="bar"><div class="bhead"><span class="bm">Balancín N° 44</span><span class="bmeta"><b style="color:#0f6e56">87% productivo</b> · 6.4 hs registradas</span></div><div class="btrack"><div title="Producción: 5.6 hs" style="width:87.21%;background:#1baf7a;border-right:2px solid #F1F3F5"></div><div title="Humanas: 0.6 hs" style="width:8.69%;background:#c3c2b7;border-right:2px solid #F1F3F5"></div><div title="Sin clasificar: 0.3 hs" style="width:4.10%;background:#eda100;border-right:2px solid #F1F3F5"></div></div><details class="pdet"><summary>ver las paradas de este puesto</summary><ul><li><span class="pd" style="background:#c3c2b7"></span>Almuerzo <b>0.6 hs</b> <span class="pn">1 evento · 33 min c/u</span></li><li><span class="pd" style="background:#eda100"></span>Otro <b>0.3 hs</b> <span class="pn">3 eventos · 5 min c/u</span></li></ul></details></div><div class="bar"><div class="bhead"><span class="bm">Balancín N° 45</span><span class="bmeta"><b style="color:#0f6e56">90% productivo</b> · 16.2 hs registradas</span></div><div class="btrack"><div title="Producción: 14.6 hs" style="width:89.94%;background:#1baf7a;border-right:2px solid #F1F3F5"></div><div title="Humanas: 0.6 hs" style="width:3.58%;background:#c3c2b7;border-right:2px solid #F1F3F5"></div><div title="Sin clasificar: 1.1 hs" style="width:6.49%;background:#eda100;border-right:2px solid #F1F3F5"></div></div><details class="pdet"><summary>ver las paradas de este puesto</summary><ul><li><span class="pd" style="background:#eda100"></span>Otro <b>1.1 hs</b> <span class="pn">7 eventos · 9 min c/u</span></li><li><span class="pd" style="background:#c3c2b7"></span>Almuerzo <b>0.6 hs</b> <span class="pn">1 evento · 35 min c/u</span></li></ul></details></div>
+
+<div class="sec-head" style="margin-top:34px"><span class="sec-no">03</span><h2>Calidad del dato</h2></div>
+<div class="qual">
+      <h4>Calidad del dato · eventos de tablet sin cerrar</h4>
+      <p class="note" style="margin-top:0">Se detectaron <b>2 eventos de más de 12 hs</b>,
+      que suman <b>31 hs</b>. Ninguna tarea real dura tanto: son eventos que quedaron abiertos
+      (varios cruzan la noche o el fin de semana). <b>Se excluyeron del cálculo</b> para no mostrar desvíos
+      falsos, y se listan acá para que se corrijan en planta.</p>
+      <table><thead><tr><th class="l">Puesto · evento</th><th>Operario</th><th>Abrió</th><th>Cerró</th><th>Duración</th></tr></thead>
+      <tbody><tr><td class="prod">Esmerilado Izq. Nro 64<span class="maq">Producción
+             · Tubo Mate Listo - Esmerilado</span></td>
+            <td class="num opr">4059</td>
+            <td class="num fh"><b>lun 28/09/2026</b><br>14:54</td>
+            <td class="num fh"><b>mar 29/09/2026</b><br>06:48</td>
+            <td class="num strong">15.9 hs<span class="pzsevt">0 pzs cargadas</span></td></tr><tr><td class="prod">Esmerilado Izq. Nro 64<span class="maq">Producción
+             · Tapa Gastronómica 45 - Esmerilado</span></td>
+            <td class="num opr">4059</td>
+            <td class="num fh"><b>jue 01/10/2026</b><br>15:45</td>
+            <td class="num fh"><b>vie 02/10/2026</b><br>06:57</td>
+            <td class="num strong">15.2 hs<span class="pzsevt">0 pzs cargadas</span></td></tr></tbody></table>
+      <p class="tot">Productos sin dato confiable por esto: <b>Tapa Gastronómica 45 - Esmerilado</b>.
+      <p class="tot">Mientras esto siga pasando, el tiempo real de esas piezas no se puede medir.</p>
+      <p class="note">El operario es el legajo que la tablet tenía cargado al abrir el evento
+      (no necesariamente quien lo dejó abierto). Las piezas son las que quedaron registradas
+      dentro del evento: en cero, confirma que no era una tarea real.</p>
+    </div>
+
+<div class="status"><h3>Estado de los datos</h3>
+<p class="note">Máquinas sólidas: Prensa · Balancines. En observación: plegadoras, esmeriladoras, pulidoras.
+El “normal” sale del histórico limpio (721 combinaciones máquina-producto, mediana, outliers apartados).
+Normal establecido ≥5 días; con 2–4 días es preliminar; con menos, primera vez.
+Umbrales del semáforo: rojo ≥+25% vs costos, amarillo +10%.
+Causas: planilla de monitoreo de Matías, cruzada por código (28 productos con causa relevada).</p></div>
+
+<footer><span>Generado desde Wiidem + maestro + monitoreo de Matías · Referencia: histórico limpio</span>
+<span>Acermel · 06/10/2026</span></footer>
+</div></body></html>
