@@ -161,19 +161,23 @@ const SEGUIMIENTOS = [
     solucion:"Definir: subir el tiempo en costos, o cambiar el material de la matriz para dejar de usar papel con gasoil." },
 
   { tema:"Productos de plegado sobre costos", puesto:"Plegadoras 7 y 100", estado:"decision", desde:"2026-08-18",
-    problema:"Empezó con cuatro productos en agosto (Espátula Untar 8″ y 10″, Fondo Colador Cuadrado, Asa Cacerola Donna). La semana del 21/09 <b>8 de los 17 productos en rojo salieron de plegadoras</b>, con Comandera 90 cm a 7,0× y Comandera 60 cm a 4,2× sobre tiradas chicas. No es un producto puntual: es toda la familia de plegado la que está mal tiempada.",
+    problema:"Empezó con cuatro productos en agosto (Espátula Untar 8″ y 10″, Fondo Colador Cuadrado, Asa Cacerola Donna). La semana del 21/09 fueron 8 de 17 rojos, y el 13/10 <b>la mitad de los rojos siguen siendo de plegadoras</b>, con Colador Cuadrado 16×16 Cerrado Borde a 4,40× — el mismo producto que abrió el tema en agosto, dos meses después y peor. No es un producto puntual: es toda la familia de plegado la que está mal tiempada.",
     solucion:"Dejar de corregir producto por producto. Revisar los TC de plegado como conjunto y, en paralelo, evaluar la matriz que hace los dos plegados de un golpe." },
 
   { tema:"TC cronometrados que no se cargaron en Wiidem", puesto:"Balancines · Plegadoras · Pulidora", estado:"decision", desde:"2026-08-24",
     problema:"<b>Ya son once productos medidos con cronómetro y ninguno corregido</b>, y la semana del 21/09 sumó siete de una vez: Colador Triangular N°30 y N°35, Tapa Alcuza 1/2 Lt, Mango Colador, Espátula Reforzada 30×10, Legumbrera Oval 26 y Pinza de Hielo Lujo. En dos de ellos (Tapa Alcuza y Legumbrera) directamente no había tiempo en la planilla de costos y se cargó un 0,5 estimado. En todos, Matías anota «no se cambió en Wiidem».",
-    solucion:"El cuello de botella ya no es medir: Matías mide bien y rápido. Falta definir quién carga el TC medido en Wiidem y en la planilla de costos, y con qué frecuencia. Mientras no exista ese paso, cada medición se pierde y el producto vuelve a aparecer desviado la semana siguiente." },
+    solucion:"El cuello de botella ya no es medir: Matías mide bien y rápido, y ya son 33 productos con causa relevada. Falta definir quién carga el TC medido en Wiidem y en la planilla de costos, y con qué frecuencia. Mientras no exista ese paso, cada medición se pierde y el producto vuelve a aparecer desviado la semana siguiente." },
+
+  { tema:"Costos sobrestimados: productos al 150–350% de performance", puesto:"Balancines · Plegadora 7", estado:"decision", desde:"2026-10-13",
+    problema:"El caso más extremo hasta ahora: <b>Cucharón N°12 Enterizo – Plegado al 350% de performance</b> (TC de costos 0,833 min contra 0,15 cronometrado, sobre 512 pzs el 16/10). Se suman Pinza de Hielo Estrella al 145% sobre 1.859 pzs y Band. Rect. con embudo al 150%. Acá la planta no pierde tiempo: <b>se está cotizando mucho más caro de lo que cuesta producir</b>, y sobre tiradas grandes.",
+    solucion:"Es el mismo problema de carga de TC, pero con el signo invertido y plata en juego del lado comercial. Priorizar la corrección de estos tres antes que los desvíos de tiradas chicas." },
 
   { tema:"Familia Asadera / Chafing sin TC real", puesto:"Pulidora 55", estado:"decision", desde:"2026-08-24",
     problema:"7 de los 12 rojos de la semana del 24/08 salieron de este puesto. Varios productos no tenían tiempo en la planilla de costos y se les asignó un valor estimado que no se parece al real: Asadera 80x60 Cepillo llegó a 4,9× y el 21/09 <b>Asas Cacerola 24-30 Gastronómica – Polea 180 dio 9,13×</b> sobre 19 piezas. Legumbrera Oval 26 confirmó el patrón: no había tiempo en costos, se puso 0,5 y el real es 1,79.",
     solucion:"Medir y cargar los TC reales de toda la familia de una vez, en lugar de corregir producto por producto cada semana." },
 
   { tema:"Repaso de mercadería sin presupuestar", puesto:"Pulidora 55", estado:"decision", desde:"2026-09-08",
-    problema:"Va y viene sin resolverse: 27,5 hs (08/09), 14,2 hs (21/09) y <b>19,4 hs otra vez el 28/09 en solo 4 eventos de ~4,9 hs cada uno</b>, con el puesto al 13% productivo. Tres semanas discutiendo el mismo tiempo sin que esté definido si es trabajo previsto o retrabajo por fallas de un proceso anterior.",
+    problema:"Cuatro semanas sin resolverse: 27,5 hs (08/09), 14,2 hs (21/09), 19,4 hs (28/09) y <b>10,9 hs el 13/10 en apenas 2 eventos de 5,5 hs cada uno</b>. Es sistemáticamente el evento más grande del puesto, que esta semana quedó 30% productivo. Sigue sin definirse si es trabajo previsto o retrabajo por fallas de un proceso anterior.",
     solucion:"Definir qué es el repaso de mercadería: si es parte del proceso, presupuestarlo como tal; si es retrabajo, rastrear de dónde vienen las piezas que hay que repasar." },
   { tema:"Cambio de esmeriladora", puesto:"Esmerilado Izq. 64 y Esmeriladora 63", estado:"planta", desde:"2026-09-21",
     problema:"Dos semanas seguidas es el evento más grande del puesto: 32,6 hs en 9 eventos (21/09) y <b>30,8 hs en 15 eventos (28/09)</b>. La duración media cayó de 3,6 hs a 2,1 hs, pero se hicieron más cambios. No es solo de ese puesto: Esmeriladora 63 quedó 26% productiva con 4,1 hs en el mismo concepto.",
@@ -183,8 +187,8 @@ const SEGUIMIENTOS = [
     solucion:"La causa está identificada hace más de un año y el producto sigue dando el peor desvío de la semana. Decidir: reparar o reemplazar la matriz, o cargar el desbarbado manual en el costo del producto." },
 
   { tema:"Eventos sin cerrar: volvieron en el mismo puesto", puesto:"Esmerilado Izq. 64 · legajo 4059", estado:"planta", desde:"2026-08-10",
-    problema:"Después de la primera semana limpia (21/09, cero eventos), el 28/09 volvieron: <b>2 eventos, 31 hs, los dos del legajo 4059</b>, abriendo a media tarde y «cerrando» a las 6:48 y 6:57 de la mañana siguiente. Dejaron el 42% del tiempo del puesto fuera del cálculo. Es el séptimo evento del mismo operario en el mismo puesto desde agosto.",
-    solucion:"La semana limpia demostró que se puede. Falta que el cierre al terminar el turno quede fijado como rutina en ese puesto, no como esfuerzo puntual." },
+    problema:"Una sola semana limpia (21/09) y después volvieron: 2 eventos y 31 hs el 28/09, 1 evento y 15,7 hs el 13/10. <b>Todos del legajo 4059 en el mismo puesto</b>, siempre abriendo a media tarde y «cerrando» a las 6 de la mañana. El del 13/10 dejó el <b>73% del tiempo del puesto</b> fuera del cálculo: Esmerilado Izq. 64 lleva meses sin poder medirse.",
+    solucion:"La semana limpia demostró que se puede. Falta que el cierre al terminar el turno quede fijado como rutina en ese puesto, con su supervisor, no como esfuerzo puntual." },
 ];
 
 /* =====================================================================
@@ -199,6 +203,10 @@ const SEGUIMIENTOS = [
      archivo -> nombre EXACTO del .html
    ===================================================================== */
 const INFORMES = [
+  { desde:"2026-10-13", hasta:"2026-10-16",
+    titulo:"Informe semanal de planta — Producción y desvíos de ciclo",
+    resumen:"5.329 piezas en 36 productos: 6 en rojo, 2 en amarillo, 28 en verde.",
+    archivo:"informe-2026-10-13.html" },
   { desde:"2026-09-28", hasta:"2026-10-02",
     titulo:"Informe semanal de planta — Producción y desvíos de ciclo",
     resumen:"5.271 piezas en 61 productos: 13 en rojo, 8 en amarillo, 39 en verde. 1 sin dato confiable.",
